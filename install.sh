@@ -1,7 +1,16 @@
 export USERNAME=$(whoami)
 
-is_linux() { [ $(uname -s) == "Linux" ]; }
-is_macos() { [ $(uname -s) == "Darwin" ]; }
+
+if [ $(uname -s) == "Linux" ]; then
+    is_linux=true
+    is_macos=false
+elif [ $(uname -s) == "Darwin" ]; then
+    is_linux=false
+    is_macos=true
+else
+    echo "Unsupported OS"
+    exit 1
+fi
 
 if $CODESPACES; then
     DOTFILES_DIR="/workspaces/.codespaces/.persistedshare/dotfiles"
@@ -12,21 +21,23 @@ fi
 mkdir dev
 mkdir .virtualenvs
 
-if is_linux;
-then
+if $is_linux; then
     sudo apt-get update
     sudo apt-get -y install --no-install-recommends apt-utils dialog 2>&1
 
     sudo apt-get install -y \
     zsh;
-else
+elif $is_macos; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    echo "Unsupported OS"
+    exit 1
 fi
 
 ln -sf $DOTFILES_DIR/.zshrc ~/.zshrc
 ln -sf $DOTFILES_DIR/.tool-versions ~/.tool-versions
 ln -sf $DOTFILES_DIR/.p10k.zsh ~/.p10k.zsh
-if is_linux; then sudo chsh -s /usr/bin/zsh $USERNAME; fi
+if $is_linux; then sudo chsh -s /usr/bin/zsh $USERNAME; fi
 
 # oh-my-zsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -49,16 +60,18 @@ git clone https://github.com/Aloxaf/fzf-tab ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/p
 ln -sf $DOTFILES_DIR/oh-my-zsh/custom/plugins/git-auto-status ~/.oh-my-zsh/custom/plugins/git-auto-status
 
 # install some things
-if is_linux;
-then
+if $is_linux; then
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf;
     sudo apt-get install -y fzf;
     sudo apt-get install git-flow;
-else
+elif $is_macos; then
     brew install asdf;
     brew install fzf;
     brew install git-flow-avh;
     brew install micro;
+else
+    echo "Unsupported OS"
+    exit 1
 fi
 
 . $HOME/.asdf/asdf.sh;
