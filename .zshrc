@@ -99,4 +99,4 @@ then
 fi
 
 # Created by `userpath` on 2020-06-10 07:30:04
-export PATH="$PATH:$HOME/.local/bin"
+# export PATH="$PATH:$HOME/.local/bin"
