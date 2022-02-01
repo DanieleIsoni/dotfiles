@@ -1,8 +1,8 @@
  #!/usr/bin/zsh
 export USERNAME=$(whoami)
 
-is_linux() { [ $(uname -s) == "Linux" ]; };
-is_macos() { [ $(uname -s) == "Darwin" ]; };
+is_linux() { [ $(uname -s) = "Linux" ]; };
+is_macos() { [ $(uname -s) = "Darwin" ]; };
 
 if $CODESPACES; then
     DOTFILES_DIR="/workspaces/.codespaces/.persistedshare/dotfiles"
