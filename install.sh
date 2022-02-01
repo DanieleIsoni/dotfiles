@@ -1,6 +1,6 @@
 export USERNAME=$(whoami)
 
-rcho $(uname -s)
+echo $(uname -s)
 
 if [ $(uname -s) == "Linux" ]; then
     is_linux=true
