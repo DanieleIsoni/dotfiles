@@ -1,11 +1,12 @@
+ #!/usr/bin/zsh
 export USERNAME=$(whoami)
 
 echo $(uname -s)
 
-if [ $(uname -s) == "Linux" ]; then
+if [[ $(uname -s) == "Linux" ]]; then
     is_linux=true
     is_macos=false
-elif [ $(uname -s) == "Darwin" ]; then
+elif [[ $(uname -s) == "Darwin" ]]; then
     is_linux=false
     is_macos=true
 else
