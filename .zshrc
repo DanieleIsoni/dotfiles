@@ -31,7 +31,7 @@ then
 		macos
 		pimento
 	)
-else
+fi
 
 ZSH_DISABLE_COMPFIX=true
 
