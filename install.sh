@@ -54,11 +54,13 @@ ln -sf $DOTFILES_DIR/oh-my-zsh/custom/plugins/git-auto-status ~/.oh-my-zsh/custo
 # install some things
 if is_linux; then
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf;
-    sudo apt-get install -y fzf;
+    git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+    ~/.fzf/install
     sudo apt-get install git-flow;
 elif is_macos; then
     brew install asdf;
     brew install fzf;
+    $(brew --prefix)/opt/fzf/install
     brew install git-flow-avh;
     brew install micro;
 else
@@ -66,7 +68,7 @@ else
     exit 1
 fi
 
-. $HOME/.asdf/asdf.sh;
+sh $HOME/.asdf/asdf.sh;
 
 asdf plugin add python
 asdf install python 3.7.12
