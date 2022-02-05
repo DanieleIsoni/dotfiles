@@ -24,8 +24,7 @@ plugins=(
 	zsh-autosuggestions
 )
 
-if is_macos;
-then
+if is_macos; then
 	plugins+=(
 		brew
 		macos
@@ -71,8 +70,7 @@ alias wo=workon
 alias dvenv=deactivate
 
 mkvenv() {
-	if [ $# -gt 1 ];
-	then
+	if [ $# -gt 1 ]; then
 		mkvirtualenv -p ${1}/bin/python ${2};
 	else
 		mkvirtualenv ${1};
@@ -87,14 +85,12 @@ alias gacp='{ IFS= read -r d && gaa && gcam "$d" && gp; } <<<'
 alias glo="git log --oneline --decorate --pretty='%C(yellow)%h%Creset %C(auto)%d%Creset %s %Cgreen(%ai) %C(bold blue)<%an>%Creset'"
 
 # Run programs
-if is_macos;
-then
+if is_macos; then
 	alias safari='open /Applications/Safari.app';
 fi
 
 CUSTOM_RC=~/.custom-rc
-if [-f "$CUSTOM_RC"];
-then 
+if [ -f $CUSTOM_RC ]; then 
 	source $CUSTOM_RC;
 fi
 
