@@ -55,12 +55,12 @@ ln -sf $DOTFILES_DIR/oh-my-zsh/custom/plugins/git-auto-status ~/.oh-my-zsh/custo
 if is_linux; then
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf;
     git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-    ~/.fzf/install
+    ~/.fzf/install --key-bindings --completion --update-rc
     sudo apt-get install git-flow;
 elif is_macos; then
     brew install asdf;
     brew install fzf;
-    $(brew --prefix)/opt/fzf/install
+    $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc
     brew install git-flow-avh;
     brew install micro;
 else
