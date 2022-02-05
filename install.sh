@@ -90,7 +90,7 @@ asdf plugin add poetry
 asdf install poetry 1.1.12
 
 python39=$(asdf where python 3.9.9)
-if [ $python39 != "" ]; then
+if [ $python39 ]; then
     echo "Installing virtualenvwrapper"
     $python39/bin/pip install --upgrade pip
     $python39/bin/pip install virtualenvwrapper
