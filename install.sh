@@ -68,22 +68,30 @@ else
     exit 1
 fi
 
-sh $HOME/.asdf/asdf.sh;
+zsh $HOME/.asdf/asdf.sh;
 
+echo "Installing python with asdf"
 asdf plugin add python
 asdf install python 3.7.12
 asdf install python 3.9.9
 
+echo "Installing go with asdf"
 asdf plugin add go
 asdf install go 1.15.15
 asdf install go 1.16.12
 asdf install go 1.17.5
 
+echo "Installing nodejs with asdf"
 asdf pulgin add nodejs
 asdf install nodejs 16.8.0
 
+echo "Installing poetry with asdf"
 asdf plugin add poetry
 asdf install poetry 1.1.12
 
-pip install --upgrade pip
-pip install virtualenvwrapper
+python39=$(asdf where python 3.9.9)
+if [ $python39 != "" ]; then
+    echo "Installing virtualenvwrapper"
+    $python39/bin/pip install --upgrade pip
+    $python39/bin/pip install virtualenvwrapper
+fi
