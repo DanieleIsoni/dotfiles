@@ -1,4 +1,4 @@
- #!/usr/bin/zsh
+#!/usr/bin/zsh
 export USERNAME=$(whoami)
 
 is_linux() { [ $(uname -s) = "Linux" ]; };
