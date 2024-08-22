@@ -31,6 +31,7 @@ plugins+=(
     poetry
     terraform
     # vi-mode
+    zoxide
     zsh-syntax-highlighting
     zsh-autosuggestions
 )

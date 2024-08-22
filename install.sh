@@ -95,6 +95,7 @@ which speedtest > /dev/null || brew install speedtest-cli;
 which teleport > /dev/null || brew install teleport;
 which watchman > /dev/null || brew install watchman;
 which wget > /dev/null || brew install wget;
+which zoxide > /dev/null || brew install zoxide;
 
 which aws-vault > /dev/null || brew install --cask aws-vault;
 
