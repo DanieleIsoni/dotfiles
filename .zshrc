@@ -59,6 +59,28 @@ source $ZSH/oh-my-zsh.sh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [ ! -f ~/.p10k.zsh ] || source ~/.p10k.zsh
 
+DISABLE_AUTO_TITLE="true"
+
+# Function to update the terminal title with the current running command
+function update_term_title_with_command() {
+    TILDE_PWD="${PWD/#$HOME/~}"
+    PRE_COMMAND_PROMPT="$USER : $TILDE_PWD :"
+    echo -ne "\033]0;$PRE_COMMAND_PROMPT $1\007"
+}
+
+# Preexec hook to capture the running command
+preexec() {
+    update_term_title_with_command "$1"
+}
+
+# Precognition: Ensures the terminal title reverts back to idle after a command finishes
+precmd() {
+    # TILDE_PWD="${PWD/#$HOME/~}"
+    # PRE_COMMAND_PROMPT="$USER : $TILDE_PWD :"
+    # echo -ne "\033]0;$PRE_COMMAND_PROMPT zsh\007"
+    update_term_title_with_command "zsh"
+}
+
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -130,6 +152,7 @@ alias zrc='cd ~/dotfiles/ && vim .zshrc'
 
 # Vim
 alias vim="nvim"
+alias vi="nvim"
 export VISUAL="nvim --cmd 'let g:flatten_wait=1'"
 export MANPAGER="nvim +Man!"
 alias nv-conf="cd ~/.config/nvim && nvim"
@@ -142,6 +165,12 @@ alias prun="poetry run"
 
 # process-compose
 alias pc="process-compose"
+
+# tmux
+alias ta="tmux new -A -s"
+alias tw="ta work"
+alias tvi="ta nv-conf "
+alias tmake="ta make-template"
 
 # if [ -z "$BW_SESSION" ]; then
 #     export BW_SESSION=$(bw unlock --raw)
