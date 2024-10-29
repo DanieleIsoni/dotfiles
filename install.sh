@@ -127,9 +127,12 @@ mkdir .virtualenvs
 CONFIG_DIR="$HOME/.config"
 DOTFILES_CONFIG_DIR="$DOTFILES_DIR/config"
 
-
 ## Neovim
-# TODO
+
+NVIM_CONFIG_DIR="$CONFIG_DIR/nvim"
+if [ ! -d $NVIM_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/nvim $NVIM_CONFIG_DIR
+fi
 
 source ~/.zshrc;
 
