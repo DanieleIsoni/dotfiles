@@ -99,11 +99,6 @@ which zoxide > /dev/null || brew install zoxide;
 
 which aws-vault > /dev/null || brew install --cask aws-vault;
 
-if is_linux; then
-    brew tap wez/wezterm-linuxbrew;
-    brew install wezterm;
-fi
-
 if is_macos; then
     which arc > /dev/null || brew install arc;
     which mas > /dev/null || brew install mas;
@@ -113,7 +108,6 @@ if is_macos; then
     brew install --cask raycast;
     brew install --cask rectangle;
     brew install --cask stats;
-    brew install --cask wezterm;
 
     mas install 1352778147; # Bitwarden
     mas install 1438243180; # Dark Reader for Safari
@@ -133,12 +127,6 @@ mkdir .virtualenvs
 CONFIG_DIR="$HOME/.config"
 DOTFILES_CONFIG_DIR="$DOTFILES_DIR/config"
 
-## WezTerm
-
-WEZTERM_CONFIG_DIR="$CONFIG_DIR/wezterm"
-if [ ! -d $WEZTERM_CONFIG_DIR ]; then
-    ln -sf $DOTFILES_CONFIG_DIR/wezterm $WEZTERM_CONFIG_DIR
-fi
 
 ## Neovim
 # TODO
