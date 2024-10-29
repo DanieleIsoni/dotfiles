@@ -86,7 +86,7 @@ which fd > /dev/null || brew install fd;
 which fzf > /dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc);
 which git > /dev/null || brew install git;
 which git-flow > /dev/null || brew install git-flow-avh;
-which nivm > /dev/null || brew install neovim;
+which nvim > /dev/null || brew install neovim;
 which rich > /dev/null || brew install rich-cli;
 which rg > /dev/null || brew install ripgrep;
 which vault > /dev/null || brew install hashicorp/tap/vault;
