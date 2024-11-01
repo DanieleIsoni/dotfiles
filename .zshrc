@@ -17,12 +17,12 @@ plugins=()
 
 if is_macos; then
     plugins+=(
-        brew
         macos
     )
 fi
 
 plugins+=(
+    brew
     asdf
     aws-vault
     command-not-found
@@ -37,7 +37,6 @@ plugins+=(
     kubectl
     poetry
     terraform
-    # vi-mode
     zoxide
     zsh-syntax-highlighting
     zsh-autosuggestions
@@ -92,15 +91,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 
 # Python Virtualenvwrapper
-pythonVersion=$(python --version)
-# this is for python 2 which prints version in stderr
-if [[ $pythonVersion == "" ]]; then
-    pythonVersion=$(python --version 2>&1)
-fi
-
-pythonVersion=$(echo $pythonVersion | sed 's/Python //')
-
-source $HOME/.asdf/installs/python/$pythonVersion/bin/virtualenvwrapper.sh
+pythonPath=$(dirname "$(asdf which python)")
+source $pythonPath/virtualenvwrapper.sh
 
 alias wo=workon
 alias dvenv=deactivate
