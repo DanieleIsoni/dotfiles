@@ -16,7 +16,9 @@ if is_linux; then
     sudo apt -y install --no-install-recommends apt-utils dialog 2>&1
 
     sudo apt install -y \
-        zsh;
+        zsh \
+        gcc pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl \
+        libffi-dev build-essential zlib1g-dev libreadline-dev libsqlite3-dev liblzma-dev libbz2-dev;
     which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 elif is_macos; then
     which brew > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -47,9 +49,12 @@ P10K_DIR=$OMZ_CUSTOM/themes/powerlevel10k
 if [ ! -d $P10K_DIR ]; then
     git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $P10K_DIR
 fi
+
 # install fonts
-brew tap homebrew/cask-fonts
-brew install --cask font-jetbrains-mono-nerd-font
+if is_macos; then
+    brew tap homebrew/cask-fonts
+    brew install --cask font-jetbrains-mono-nerd-font
+fi
 
 # oh-my-zsh plugins
 OMZ_CUSTOM_PLUGINS=$OMZ_CUSTOM/plugins
@@ -71,6 +76,7 @@ if [ ! -d $GIT_AUTO_STATUS_DIR ]; then
 fi
 AWS_VAULT_DIR=$OMZ_CUSTOM_PLUGINS/aws-vault
 if [ ! -d $AWS_VAULT_DIR ]; then
+    mkdir $AWS_VAULT_DIR
     curl -o $AWS_VAULT_DIR/aws-vault.plugin.zsh https://raw.githubusercontent.com/99designs/aws-vault/master/contrib/completions/zsh/aws-vault.zsh
 fi
 
