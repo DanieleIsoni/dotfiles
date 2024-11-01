@@ -92,6 +92,7 @@ which fd > /dev/null || brew install fd;
 which fzf > /dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc);
 which git > /dev/null || brew install git;
 which git-flow > /dev/null || brew install git-flow-avh;
+which lazygit > /dev/null || brew install lazygit;
 which nvim > /dev/null || brew install neovim;
 which rich > /dev/null || brew install rich-cli;
 which rg > /dev/null || brew install ripgrep;
@@ -99,6 +100,7 @@ which vault > /dev/null || brew install hashicorp/tap/vault;
 which visidata > /dev/null || brew install saulpw/vd/visidata;
 which speedtest > /dev/null || brew install speedtest-cli;
 which teleport > /dev/null || brew install teleport;
+which tmux > /dev/null || brew install tmux;
 which watchman > /dev/null || brew install watchman;
 which wget > /dev/null || brew install wget;
 which zoxide > /dev/null || brew install zoxide;
@@ -109,6 +111,7 @@ if is_macos; then
     which arc > /dev/null || brew install arc;
     which mas > /dev/null || brew install mas;
     which orb > /dev/null || brew install orbstack;
+    which tailscale > /dev/null || brew install tailscale;
 
     brew install --cask logi-options-plus;
     brew install --cask raycast;
@@ -126,12 +129,18 @@ if is_macos; then
     mas install 1147396723; # WhatsApp
 fi
 
+if is_linux; then
+    curl -fsSL https://tailscale.com/install.sh | sh
+fi
+
 mkdir .virtualenvs
 
 # Configs
 
 CONFIG_DIR="$HOME/.config"
 DOTFILES_CONFIG_DIR="$DOTFILES_DIR/config"
+
+mkdir -p $CONFIG_DIR
 
 ## Neovim
 
