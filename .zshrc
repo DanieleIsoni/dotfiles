@@ -37,7 +37,6 @@ plugins+=(
     kubectl
     poetry
     terraform
-    zellij
     zoxide
     zsh-syntax-highlighting
     zsh-autosuggestions
@@ -194,7 +193,3 @@ fi
 export PATH="$PATH:$HOME/.local/bin"
 
 autoload -U +X bashcompinit && bashcompinit
-
-### MANAGED BY RANCHER DESKTOP START (DO NOT EDIT)
-export PATH="/Users/daniso/.rd/bin:$PATH"
-### MANAGED BY RANCHER DESKTOP END (DO NOT EDIT)

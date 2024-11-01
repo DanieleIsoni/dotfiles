@@ -103,12 +103,6 @@ which teleport > /dev/null || brew install teleport;
 which tmux > /dev/null || brew install tmux;
 which watchman > /dev/null || brew install watchman;
 which wget > /dev/null || brew install wget;
-which zellij > /dev/null || brew install zellij;
-ZELLIJ_DIR=$OMZ_CUSTOM_PLUGINS/zellij
-if [ ! -d $ZELLIJ_DIR ]; then
-    mkdir $ZELLIJ_DIR
-    zellij setup --generate-completion zsh > $ZELLIJ_DIR/zellij.plugin.zsh
-fi
 which zoxide > /dev/null || brew install zoxide;
 
 which aws-vault > /dev/null || brew install --cask aws-vault;
