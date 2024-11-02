@@ -130,7 +130,7 @@ if is_macos; then
 fi
 
 if is_linux; then
-    curl -fsSL https://tailscale.com/install.sh | sh
+    which tailscale > /dev/null || curl -fsSL https://tailscale.com/install.sh | sh
 fi
 
 mkdir .virtualenvs
