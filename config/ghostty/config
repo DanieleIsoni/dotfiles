@@ -1,0 +1,44 @@
+font-family = "JetBrainsMono Nerd Font Regular"
+font-family-bold = "JetBrainsMono Nerd Font Bold"
+font-family-italic = "JetBrainsMono Nerd Font Italic"
+font-family-bold-italic = "JetBrainsMono Nerd Font Bold Italic"
+
+copy-on-select = clipboard
+
+window-theme = "dark"
+
+#mouse-hide-while-typing = true
+
+# background-opacity=0.98
+# background-blur-radius=20
+
+shell-integration-features = cursor,sudo,no-title
+macos-titlebar-style = hidden
+macos-option-as-alt = right
+
+keybind = global:shift+opt+ctrl+cmd+t=toggle_quick_terminal
+
+# Tmux
+
+## [ctrl+b c] create a new tmux window
+keybind = cmd+t=text:\x02c
+## [ctrl+b w] show tmux windows
+keybind = cmd+w=text:\x02w
+## [ctrl+b n] next tmux windows
+keybind = cmd+n=text:\x02n
+## [ctrl+b p] prev tmux windows
+keybind = cmd+p=text:\x02p
+## [ctrl+b x] kill pane
+keybind = cmd+x=text:\x02x
+## [ctrl+b d] detach
+keybind = cmd+d=text:\x02d
+## [ctrl+b %] split vertical
+keybind = cmd+five=text:\x02%
+## [ctrl+b "] split vertical
+keybind = cmd+apostrophe=text:\x02"
+## [ctrl+b I] Install plugins
+keybind = cmd+shift+i=text:\x02I
+## [ctrl+b r] reload tmux config
+keybind = cmd+r=text:\x02r
+## [ctrl+b k] sesh
+keybind = cmd+k=text:\x02k

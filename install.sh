@@ -144,6 +144,12 @@ DOTFILES_CONFIG_DIR="$DOTFILES_DIR/config"
 
 mkdir -p $CONFIG_DIR
 
+## Ghostty
+GHOSTTY_CONFIG_DIR="$CONFIG_DIR/ghostty"
+if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/ghostty $GHOSTTY_CONFIG_DIR
+fi
+
 ## Neovim
 
 NVIM_CONFIG_DIR="$CONFIG_DIR/nvim"
