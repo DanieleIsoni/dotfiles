@@ -37,6 +37,7 @@ plugins+=(
     kubectl
     poetry
     terraform
+    uv
     zoxide
     zsh-syntax-highlighting
     zsh-autosuggestions
