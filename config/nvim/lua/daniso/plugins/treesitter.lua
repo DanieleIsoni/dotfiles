@@ -23,6 +23,7 @@ return {
         'ninja',
         'query',
         'rst',
+        'tmux',
         'vim',
         'vimdoc',
       },
