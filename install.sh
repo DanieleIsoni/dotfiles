@@ -173,6 +173,12 @@ if [ ! -d $TMUX_P10K_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/tmux-powerline $TMUX_P10K_CONFIG_DIR
 fi
 
+### Sesh
+SESH_CONFIG_DIR="$CONFIG_DIR/sesh"
+if [ ! -d $SESH_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/sesh $SESH_CONFIG_DIR
+fi
+
 ## Neovim
 
 NVIM_CONFIG_DIR="$CONFIG_DIR/nvim"
