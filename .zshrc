@@ -166,6 +166,7 @@ alias ta="tmux new -A -s"
 alias tw="ta work"
 alias tvi="ta nv-conf "
 alias tmake="ta make-template"
+alias s='sesh connect "$(sesh list -i | gum filter --limit 1 --placeholder "Pick a sesh" --prompt="⚡")"'
 
 # if [ -z "$BW_SESSION" ]; then
 #     export BW_SESSION=$(bw unlock --raw)

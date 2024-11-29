@@ -92,13 +92,15 @@ which fd > /dev/null || brew install fd;
 which fzf > /dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc);
 which git > /dev/null || brew install git;
 which git-flow > /dev/null || brew install git-flow-avh;
-which jq > /dev/null || brew install jq
+which gum > /dev/null || brew install gum;
+which jq > /dev/null || brew install jq;
 which lazygit > /dev/null || brew install lazygit;
 which nvim > /dev/null || brew install neovim;
 which rich > /dev/null || brew install rich-cli;
 which rg > /dev/null || brew install ripgrep;
 which vault > /dev/null || brew install hashicorp/tap/vault;
 which visidata > /dev/null || brew install saulpw/vd/visidata;
+which sesh > /dev/null || brew install joshmedeski/sesh/sesh;
 which speedtest > /dev/null || brew install speedtest-cli;
 which teleport > /dev/null || brew install teleport;
 which tmux > /dev/null || brew install tmux;
@@ -148,6 +150,27 @@ mkdir -p $CONFIG_DIR
 GHOSTTY_CONFIG_DIR="$CONFIG_DIR/ghostty"
 if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/ghostty $GHOSTTY_CONFIG_DIR
+fi
+
+## Tmux
+
+TMUX_CONFIG_DIR="$CONFIG_DIR/tmux"
+if [ ! -d $TMUX_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/tmux $TMUX_CONFIG_DIR
+fi
+
+### TPM
+
+TPM_DIR="$TMUX_CONFIG_DIR/plugins/tpm"
+if [ ! -d $TPM_DIR ]; then
+    git clone https://github.com/tmux-plugins/tpm $TPM_DIR
+fi
+
+### Tmux-Powerline
+
+TMUX_P10K_CONFIG_DIR="$CONFIG_DIR/tmux-powerline"
+if [ ! -d $TMUX_P10K_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/tmux-powerline $TMUX_P10K_CONFIG_DIR
 fi
 
 ## Neovim

@@ -4,5 +4,9 @@
 # nvim
 config/nvim/lazy-lock.json
 
+# tmux
+config/tmux/plugins/**/*
+!config/tmux/plugins/.gitkeep
+
 # lazygit
 config/lazygit/state.yml
