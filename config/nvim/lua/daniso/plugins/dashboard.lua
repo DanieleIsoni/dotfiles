@@ -68,12 +68,12 @@ return {
             icon = '󰒲 ',
             key = 'l',
           },
-          -- {
-          --   action = [[:lua require("daniso.util.keymaps").Gitlab_pipelines_toggle() <cr>]],
-          --   desc = " Pipelines",
-          --   icon = " ",
-          --   key = "p",
-          -- },
+          {
+            action = [[:lua require("daniso.util.keymaps").Gitlab_pipelines_toggle() <cr>]],
+            desc = " Pipelines",
+            icon = " ",
+            key = "p",
+          },
           {
             action = [[:!glab mr view --web<CR>]],
             desc = ' Merge Request',
