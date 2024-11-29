@@ -109,6 +109,8 @@ mkvenv() {
 alias rmvenv=rmvirtualenv
 alias lsvenv='lsvirtualenv -b'
 
+export EDITOR=/opt/homebrew/bin/nvim
+
 # gettext
 export PATH="/usr/local/opt/gettext/bin:$PATH"
 
@@ -183,6 +185,16 @@ function bw_get_password() {
         fi
     done
     echo $PASSWORD
+}
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
 }
 
 CUSTOM_RC=~/.custom-rc

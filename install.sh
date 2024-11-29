@@ -92,6 +92,7 @@ which fd > /dev/null || brew install fd;
 which fzf > /dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc);
 which git > /dev/null || brew install git;
 which git-flow > /dev/null || brew install git-flow-avh;
+which jq > /dev/null || brew install jq
 which lazygit > /dev/null || brew install lazygit;
 which nvim > /dev/null || brew install neovim;
 which rich > /dev/null || brew install rich-cli;
@@ -103,6 +104,7 @@ which teleport > /dev/null || brew install teleport;
 which tmux > /dev/null || brew install tmux;
 which watchman > /dev/null || brew install watchman;
 which wget > /dev/null || brew install wget;
+which yazi > /dev/null || brew install yazi ffmpegthumbnailer ffmpeg sevenzip poppler imagemagick;
 which zoxide > /dev/null || brew install zoxide;
 
 which aws-vault > /dev/null || brew install --cask aws-vault;
