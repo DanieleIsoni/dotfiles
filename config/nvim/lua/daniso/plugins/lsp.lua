@@ -220,7 +220,7 @@ return {
             python = {
               analysis = {
                 autoImportCompletions = true,
-                typeCheckingMode = 'on',
+                typeCheckingMode = 'off',
                 pythonPlatform = 'All',
                 analysis = { ignore = { '*' } },
               },
