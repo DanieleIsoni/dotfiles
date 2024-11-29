@@ -138,6 +138,10 @@ return {
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      vim.keymap.set('n', '<leader>sN', function()
+        require('telescope').extensions.live_grep_args.live_grep_args { cwd = vim.fn.stdpath 'config' }
+      end, { desc = '[S]earch by Grep [N]eovim files' })
     end,
   },
 }
