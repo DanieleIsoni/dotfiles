@@ -157,6 +157,13 @@ if [ ! -d $NVIM_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/nvim $NVIM_CONFIG_DIR
 fi
 
+## LazyGit
+
+LAZYGIT_CONFIG_DIR="$CONFIG_DIR/lazygit"
+if [ ! -d $LAZYGIT_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/lazygit $LAZYGIT_CONFIG_DIR
+fi
+
 source ~/.zshrc;
 
 zsh $HOME/.asdf/asdf.sh;
