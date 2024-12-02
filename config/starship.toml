@@ -1,0 +1,120 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+format = """
+$os\
+$all\
+$fill \
+$status\
+$kubernetes\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$jobs\
+$battery\
+$time\
+$container\
+$shell\
+$line_break\
+$character"""
+
+[fill]
+symbol = '-'
+style = 'white'
+
+[time]
+format = '🕙[ $time ]($style) '
+disabled = false
+
+[os]
+disabled = false
+
+[os.symbols]
+Debian = ' '
+Macos = ' '
+Ubuntu = ' '
+Raspbian = ' '
+
+[status]
+disabled = false
+
+[docker_context]
+disabled = true
+
+[package]
+disabled = true
+
+[custom.poetry]
+command = '''([ -f ".tool-versions" ] && grep "^poetry " .tool-versions | awk '{print $2}') || ([ -f "pyproject.toml" ] && poetry --version | awk '{sub(/\)$/, ""); print $NF}') '''
+detect_files = ['.tool-versions', 'pyproject.toml']
+symbol = ' '
+format = 'via [$symbol($output )]($style)'
+
+
+[kubernetes]
+disabled = false
+detect_folders = ['k8s']
+detect_files = ['k8s']
+
+[[kubernetes.contexts]]
+context_pattern = "arn:aws:eks.*/(?P<cluster>[\\w-]+)"
+context_alias = "$cluster"

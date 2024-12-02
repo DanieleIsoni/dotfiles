@@ -37,18 +37,11 @@ if [ -f ~/.zshrc ]; then
 fi
 
 ln -sf $DOTFILES_DIR/.zshrc ~/.zshrc
-ln -sf $DOTFILES_DIR/.p10k.zsh ~/.p10k.zsh
 if is_linux; then sudo chsh -s /usr/bin/zsh $USERNAME; fi
 
 source ~/.zshrc
 
 OMZ_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
-
-# oh-my-zsh powerlevel10k theme
-P10K_DIR=$OMZ_CUSTOM/themes/powerlevel10k
-if [ ! -d $P10K_DIR ]; then
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $P10K_DIR
-fi
 
 # install fonts
 if is_macos; then
@@ -151,6 +144,13 @@ GHOSTTY_CONFIG_DIR="$CONFIG_DIR/ghostty"
 if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/ghostty $GHOSTTY_CONFIG_DIR
 fi
+
+## Starship
+STARSHIP_CONFIG="$CONFIG_DIR/starship.toml"
+if [ ! -f $STARSHIP_CONFIG ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/starship.toml $STARSHIP_CONFIG
+fi
+
 
 ## Tmux
 
