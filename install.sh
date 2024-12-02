@@ -88,6 +88,7 @@ which git-flow >/dev/null || brew install git-flow-avh
 which gum >/dev/null || brew install gum
 which jq >/dev/null || brew install jq
 which lazygit >/dev/null || brew install lazygit
+which nu >/dev/null || brew install nushell
 which nvim >/dev/null || brew install neovim
 which rich >/dev/null || brew install rich-cli
 which rg >/dev/null || brew install ripgrep
@@ -143,6 +144,14 @@ mkdir -p $CONFIG_DIR
 GHOSTTY_CONFIG_DIR="$CONFIG_DIR/ghostty"
 if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/ghostty $GHOSTTY_CONFIG_DIR
+fi
+
+## Nushell
+NUSHELL_CONFIG_DIR="$HOME/Library/Application Support/nushell"
+NUSHELL_XDG_CONFIG_DIR="$CONFIG_DIR/nushell"
+if [ ! -d $NUSHELL_XDG_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/nushell $NUSHELL_XDG_CONFIG_DIR
+    ln -sf $NUSHELL_XDG_CONFIG_DIR $NUSHELL_CONFIG_DIR
 fi
 
 ## Starship

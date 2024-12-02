@@ -10,3 +10,8 @@ config/tmux/plugins/**/*
 
 # lazygit
 config/lazygit/state.yml
+
+# nushell
+config/nushell/**/*
+!config/nushell/config.nu
+!config/nushell/env.nu
