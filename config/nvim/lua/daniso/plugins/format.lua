@@ -34,10 +34,16 @@ return {
       --     lsp_format = lsp_format_opt,
       --   }
       -- end,
+      formatters = {
+        eslintfixall = function(bufnr)
+          vim.cmd 'EslintFixAll' -- Run the ESLint fix command
+          return { command = '' } -- Return an empty table since no arguments are needed
+        end,
+      },
       formatters_by_ft = {
         go = { 'gofumpt', 'goimports' },
-        javascript = { 'biome' },
-        typescript = { 'biome' },
+        javascript = { 'biome', 'eslintfixall' },
+        typescript = { 'biome', 'eslintfixall' },
         lua = { 'stylua' },
         python = function(bufnr)
           local formatters = { 'ruff_fix' }

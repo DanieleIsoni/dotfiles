@@ -228,6 +228,13 @@ return {
           },
         },
         ruff = { manual_install = true, capabilities = { hoverProvider = false } },
+        eslint = {
+          codeActionOnSave = {
+            enable = true,
+            mode = 'all',
+          },
+          format = true,
+        },
         vtsls = require('daniso.utils.lang.typescript').get_vtsls_config(),
       }
 
@@ -253,6 +260,7 @@ return {
       vim.list_extend(ensure_installed, {
         -- Formatters
         'biome', -- Used to format js/ts
+        'eslint', -- Used to format eslint
         'gofumpt', -- Used to format golang
         'goimports', -- Used to format golang
         'shfmt', -- Used to format sh
