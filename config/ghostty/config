@@ -34,7 +34,7 @@ keybind = cmd+x=text:\x02x
 keybind = cmd+d=text:\x02d
 ## [ctrl+b %] split vertical
 keybind = cmd+five=text:\x02%
-## [ctrl+b "] split vertical
+## [ctrl+b "] split horizontal
 keybind = cmd+apostrophe=text:\x02"
 ## [ctrl+b I] Install plugins
 keybind = cmd+shift+i=text:\x02I
