@@ -10,6 +10,7 @@ return {
       'nvim-lua/plenary.nvim',
       'nvim-neotest/nvim-nio',
       'nvim-neotest/neotest-python',
+      'nvim-neotest/neotest-jest',
     },
     config = function(_, opts)
       require('neotest').setup(vim.tbl_deep_extend('force', opts, {
@@ -22,6 +23,10 @@ return {
         },
         adapters = {
           require 'neotest-python' {},
+          require 'neotest-jest' {
+            jestCommand = 'npx jest',
+            jest_test_discovery = false,
+          },
         },
       }))
     end,
