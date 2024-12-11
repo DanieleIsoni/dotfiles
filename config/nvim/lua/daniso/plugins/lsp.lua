@@ -236,6 +236,7 @@ return {
           format = true,
         },
         vtsls = require('daniso.utils.lang.typescript').get_vtsls_config(),
+        jsonnet_ls = {},
       }
 
       -- Ensure the servers and tools above are installed
