@@ -1,11 +1,9 @@
-# open the file manager
 [[session]]
-name = "Downloads 📥"
+name = "📥 Downloads"
 path = "~/Downloads"
 startup_command = "y"
 
-# open a file
 [[session]]
-name = "Dotfiles "
+name = " Dotfiles"
 path = "~/dotfiles"
 startup_command = "nvim"
