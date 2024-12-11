@@ -1,10 +1,10 @@
 local M = {}
 
-local Terminal = require("toggleterm.terminal").Terminal
+local Terminal = require('toggleterm.terminal').Terminal
 
 -- compare_to_clipboard
 function M.Compare_to_clipboard()
-  local ftype = vim.api.nvim_eval("&filetype")
+  local ftype = vim.api.nvim_eval '&filetype'
   vim.cmd(string.format(
     [[
     execute "normal! \"xy"
@@ -25,31 +25,16 @@ function M.Compare_to_clipboard()
   ))
 end
 
--- lazygit
-local lazygit = Terminal:new({
-  cmd = "lazygit",
-  count = 5,
-  dir = "git_dir",
-  direction = "float",
-  float_opts = {
-    border = "double",
-  },
-})
-
-function M.Lazygit_toggle()
-  lazygit:toggle()
-end
-
 -- gitlab
-local gitlab_pipelines = Terminal:new({
-  cmd = "glab ci status -lc",
+local gitlab_pipelines = Terminal:new {
+  cmd = 'glab ci status -lc',
   count = 6,
-  dir = "git_dir",
+  dir = 'git_dir',
   close_on_exit = false,
-})
+}
 
 function M.Gitlab_pipelines_toggle()
-  gitlab_pipelines:toggle(70, "vertical")
+  gitlab_pipelines:toggle(70, 'vertical')
 end
 
 return M

@@ -30,13 +30,6 @@ vim.keymap.set('n', '<leader>qq', '<cmd>qa<cr>', { desc = '[Q]uit all [q]' })
 -- Compare to clipboard
 vim.keymap.set('x', '<Leader>cc', KeymapUtil.Compare_to_clipboard, { desc = '[C]ompare to [C]lipboard' })
 
--- lazygit
-vim.keymap.set('n', '<leader>gg', KeymapUtil.Lazygit_toggle, { noremap = true, silent = true, desc = '[G]it Lazy[g]it' })
-
 -- gitlab
 vim.keymap.set('n', '<leader>gp', KeymapUtil.Gitlab_pipelines_toggle, { noremap = true, silent = true, desc = '[G]itlab [P]ipeline (current branch)' })
 vim.keymap.set('n', '<leader>gm', '<cmd>!glab mr view --web<cr>', { noremap = true, silent = true, desc = '[G]itlab open [M]erge request (current branch)' })
-
--- buffer
-require('which-key').add { { '<leader>b', group = '[B]uffer' } }
-vim.keymap.set('n', '<leader>bd', '<cmd>bd<cr>', { desc = '[B]uffer [D]elete' })
