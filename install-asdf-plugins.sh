@@ -25,6 +25,11 @@ asdf plugin add kubectl
 asdf install kubectl latest:1.24
 asdf global kubectl latest:1.24
 
+echo "Installing teleport with asdf"
+asdf plugin add teleport https://github.com/jorpilo/asdf-teleport.git
+asdf install teleport 16.4.9
+asdf global teleport 16.4.9   
+
 pythonLatest=$(asdf where python)
 if [ $pythonLatest ]; then
     echo "Installing virtualenvwrapper"
