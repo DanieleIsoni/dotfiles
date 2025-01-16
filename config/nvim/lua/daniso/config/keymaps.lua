@@ -33,3 +33,5 @@ vim.keymap.set('x', '<Leader>cc', KeymapUtil.Compare_to_clipboard, { desc = '[C]
 -- gitlab
 vim.keymap.set('n', '<leader>gp', KeymapUtil.Gitlab_pipelines_toggle, { noremap = true, silent = true, desc = '[G]itlab [P]ipeline (current branch)' })
 vim.keymap.set('n', '<leader>gm', '<cmd>!glab mr view --web<cr>', { noremap = true, silent = true, desc = '[G]itlab open [M]erge request (current branch)' })
+
+vim.keymap.set('n', 'glf', '<C-w>F', { noremap = true, silent = true, desc = '[G]oto [l] [f]ile under cursor in new split' })
