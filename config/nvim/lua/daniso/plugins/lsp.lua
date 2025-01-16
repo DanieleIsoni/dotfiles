@@ -237,6 +237,8 @@ return {
         },
         vtsls = require('daniso.utils.lang.typescript').get_vtsls_config(),
         jsonnet_ls = {},
+        yamlls = {},
+        gitlab_ci_ls = {},
       }
 
       -- Ensure the servers and tools above are installed
@@ -266,6 +268,7 @@ return {
         'goimports', -- Used to format golang
         'shfmt', -- Used to format sh
         'stylua', -- Used to format lua
+        'yamlfmt', -- Used to format yaml
         -- Linters
         'hadolint', -- Used to lint dockerfile
         'jsonlint', -- Used to lint json

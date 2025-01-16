@@ -161,21 +161,18 @@ fi
 
 
 ## Tmux
-
 TMUX_CONFIG_DIR="$CONFIG_DIR/tmux"
 if [ ! -d $TMUX_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/tmux $TMUX_CONFIG_DIR
 fi
 
 ### TPM
-
 TPM_DIR="$TMUX_CONFIG_DIR/plugins/tpm"
 if [ ! -d $TPM_DIR ]; then
     git clone https://github.com/tmux-plugins/tpm $TPM_DIR
 fi
 
 ### Tmux-Powerline
-
 TMUX_P10K_CONFIG_DIR="$CONFIG_DIR/tmux-powerline"
 if [ ! -d $TMUX_P10K_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/tmux-powerline $TMUX_P10K_CONFIG_DIR
@@ -188,18 +185,23 @@ if [ ! -d $SESH_CONFIG_DIR ]; then
 fi
 
 ## Neovim
-
 NVIM_CONFIG_DIR="$CONFIG_DIR/nvim"
 if [ ! -d $NVIM_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/nvim $NVIM_CONFIG_DIR
 fi
 
 ## LazyGit
-
 LAZYGIT_CONFIG_DIR="$CONFIG_DIR/lazygit"
 if [ ! -d $LAZYGIT_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/lazygit $LAZYGIT_CONFIG_DIR
 fi
+
+## YamlFmt
+YAMLFMT_CONFIG_DIR="$CONFIG_DIR/yamlfmt"
+if [ ! -d $YAMLFMT_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/yamlfmt $YAMLFMT_CONFIG_DIR
+fi
+
 
 source ~/.zshrc
 

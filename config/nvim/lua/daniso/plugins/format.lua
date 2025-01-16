@@ -54,6 +54,7 @@ return {
           end
           return formatters
         end,
+        yaml = { 'yamlfmt' },
         ['_'] = { 'trim_whitespace' },
         sh = { 'shfmt' },
 
