@@ -110,12 +110,17 @@ return {
             -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
             group_index = 0,
           },
+          -- { name = 'minuet' },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
           { name = 'render-markdown' },
           -- { name = 'cody' },
         },
+        -- performance = {
+        --   fetching_timeout = 2000,
+        --   debounce = 1000,
+        -- },
       }
     end,
   },
