@@ -1,9 +1,15 @@
 [[session]]
 name = "📥 Downloads"
-path = "~/Downloads"
+path = "~/Downloads/"
 startup_command = "y"
 
 [[session]]
 name = " Dotfiles"
-path = "~/dotfiles"
+path = "~/dotfiles/"
 startup_command = "nvim"
+
+[[session]]
+name = " Nvim"
+path = "~/dotfiles/config/nvim/"
+startup_command = "nvim"
+
