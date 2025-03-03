@@ -5,12 +5,12 @@ return {
     'lewis6991/gitsigns.nvim',
     opts = {
       signs = {
-        add = { text = "▎" },
-        change = { text = "▎" },
-        delete = { text = "" },
-        topdelete = { text = "" },
-        changedelete = { text = "▎" },
-        untracked = { text = "▎" },
+        add = { text = '▎' },
+        change = { text = '▎' },
+        delete = { text = '' },
+        topdelete = { text = '' },
+        changedelete = { text = '▎' },
+        untracked = { text = '▎' },
       },
       on_attach = function(bufnr)
         local gitsigns = require 'gitsigns'
@@ -66,9 +66,12 @@ return {
   },
   {
     'tpope/vim-fugitive',
+    lazy = false,
+    dependencies = { 'shumphrey/fugitive-gitlab.vim' },
     keys = {
       { '<leader>gB', ':Git blame<CR>', desc = '[G]it [B]lame' },
       { '<leader>gh', ':0GcLog<CR>', desc = '[G]it file [H]istory' },
+      { '<leader>gr', ':GBrowse!<CR>', mode = { 'n', 'v' }, desc = 'Copy [G]it remote [R]eference' },
     },
   },
 }
