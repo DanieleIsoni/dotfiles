@@ -39,11 +39,15 @@ return {
           vim.cmd 'EslintFixAll' -- Run the ESLint fix command
           return { command = '' } -- Return an empty table since no arguments are needed
         end,
+        ruff_fix = {
+          append_args = { '--unsafe-fixes' },
+        },
       },
       formatters_by_ft = {
         go = { 'gofumpt', 'goimports' },
         javascript = { 'biome', 'eslintfixall' },
         typescript = { 'biome', 'eslintfixall' },
+        json = { 'prettier' },
         lua = { 'stylua' },
         python = function(bufnr)
           local formatters = { 'ruff_fix' }
