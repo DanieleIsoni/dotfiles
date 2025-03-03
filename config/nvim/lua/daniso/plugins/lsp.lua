@@ -40,6 +40,7 @@ return {
         cmd = 'IncRename',
         opts = {},
       },
+      { 'microsoft/python-type-stubs' },
     },
     config = function()
       -- Brief aside: **What is LSP?**
@@ -239,6 +240,11 @@ return {
         jsonnet_ls = {},
         yamlls = {},
         gitlab_ci_ls = {},
+        taplo = {
+          formatting = {
+            trailing_newline = true,
+          },
+        },
       }
 
       -- Ensure the servers and tools above are installed
@@ -264,6 +270,7 @@ return {
         -- Formatters
         'biome', -- Used to format js/ts
         'eslint', -- Used to format eslint
+        'prettier',
         'gofumpt', -- Used to format golang
         'goimports', -- Used to format golang
         'shfmt', -- Used to format sh
