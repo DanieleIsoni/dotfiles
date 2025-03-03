@@ -14,9 +14,9 @@ if is_macos; then
     )
 fi
 
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 plugins+=(
     brew
-    asdf
     aws-vault
     command-not-found
     docker
