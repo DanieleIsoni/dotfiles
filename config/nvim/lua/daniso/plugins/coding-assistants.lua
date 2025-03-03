@@ -13,12 +13,13 @@ return {
         model = os.getenv 'CLAUDE_BEDROCK_ARN',
         temperature = 0,
         max_tokens = 4096,
+        -- disable_tools = true,
       },
       vendors = {
         ['openai_autosuggestions'] = {
           __inherited_from = 'openai',
           endpoint = 'http://localhost:12345/api',
-          model = 'gpt-4o-mini',
+          model = 'o3-mini',
           allow_insecure = false, -- Allow insecure server connections
           timeout = 30000, -- Timeout in milliseconds
           temperature = 0,
@@ -28,15 +29,23 @@ return {
       behaviour = {
         auto_suggestions = false,
       },
+      file_selector = {
+        provider = 'telescope',
+      },
+      web_search_engine = {
+        provider = 'tavily', -- tavily, serpapi or google
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = 'make',
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
     dependencies = {
+      'nvim-treesitter/nvim-treesitter',
       'stevearc/dressing.nvim',
       'nvim-lua/plenary.nvim',
       'MunifTanjim/nui.nvim',
       --- The below dependencies are optional,
+      'nvim-telescope/telescope.nvim', -- for file_selector provider telescope
       'hrsh7th/nvim-cmp', -- autocompletion for avante commands and mentions
       'nvim-tree/nvim-web-devicons', -- or echasnovski/mini.icons
       'zbirenbaum/copilot.lua', -- for providers='copilot'
