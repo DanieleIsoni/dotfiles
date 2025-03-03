@@ -50,6 +50,21 @@ return {
           end,
         },
         completion = { completeopt = 'menu,menuone,noinsert' },
+        formatting = {
+          format = function(entry, vim_item)
+            -- Show source name in the menu
+            vim_item.menu = ({
+              nvim_lsp = '[LSP]',
+              luasnip = '[Snippet]',
+              path = '[Path]',
+              lazydev = '[LazyDev]',
+              ['render-markdown'] = '[Markdown]',
+              -- cody = "[Cody]",
+              -- minuet = "[Minuet]",
+            })[entry.source.name]
+            return vim_item
+          end,
+        },
 
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
