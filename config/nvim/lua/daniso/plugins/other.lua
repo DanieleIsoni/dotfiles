@@ -1,3 +1,5 @@
+-- Other
+
 return {
   'rgroli/other.nvim',
   config = function()

@@ -1,116 +1,37 @@
--- Startup dashboard
+-- Dashboard
 
 return {
-  'nvimdev/dashboard-nvim',
-  event = 'VimEnter',
-  opts = function()
-    local logo = [[
+  'snacks.nvim',
+  opts = {
+    dashboard = {
+      preset = {
+        pick = function(cmd, opts)
+          return LazyVim.pick(cmd, opts)()
+        end,
+        header = [[
         ██████╗░░█████╗░███╗░░██╗██╗░██████╗░█████╗░░░░███╗░░██╗██╗░░░██╗██╗███╗░░░███╗
         ██╔══██╗██╔══██╗████╗░██║██║██╔════╝██╔══██╗░░░████╗░██║██║░░░██║██║████╗░████║
         ██║░░██║███████║██╔██╗██║██║╚█████╗░██║░░██║░░░██╔██╗██║╚██╗░██╔╝██║██╔████╔██║
         ██║░░██║██╔══██║██║╚████║██║░╚═══██╗██║░░██║░░░██║╚████║░╚████╔╝░██║██║╚██╔╝██║
         ██████╔╝██║░░██║██║░╚███║██║██████╔╝╚█████╔╝██╗██║░╚███║░░╚██╔╝░░██║██║░╚═╝░██║
         ╚═════╝░╚═╝░░╚═╝╚═╝░░╚══╝╚═╝╚═════╝░░╚════╝░╚═╝╚═╝░░╚══╝░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝
-    ]]
-
-    logo = string.rep('\n', 8) .. logo .. '\n\n'
-
-    local opts = {
-      theme = 'doom',
-      config = {
-        header = vim.split(logo, '\n'),
-        center = {
-          {
-            action = 'Telescope find_files',
-            desc = ' Find file',
-            icon = ' ',
-            key = 'f',
-          },
-          {
-            action = 'ene | startinsert',
-            desc = ' New file',
-            icon = ' ',
-            key = 'n',
-          },
-          {
-            action = 'Telescope oldfiles',
-            desc = ' Recent files',
-            icon = ' ',
-            key = 'r',
-          },
-          {
-            action = 'Telescope live_grep',
-            desc = ' Find text',
-            icon = ' ',
-            key = 'g',
-          },
-          {
-            action = 'Telescope projects',
-            desc = ' Projects',
-            icon = ' ',
-            key = 'P',
-          },
-          {
-            action = [[lua require("telescope.builtin").find_files({cwd=vim.fn.stdpath("config")})]],
-            desc = ' Config',
-            icon = ' ',
-            key = 'c',
-          },
-          {
-            action = 'lua require("persistence").load()',
-            desc = ' Restore Session',
-            icon = ' ',
-            key = 's',
-          },
-          {
-            action = 'Lazy',
-            desc = ' Lazy',
-            icon = '󰒲 ',
-            key = 'l',
-          },
-          {
-            action = [[:lua require("daniso.util.keymaps").Gitlab_pipelines_toggle() <cr>]],
-            desc = " Pipelines",
-            icon = " ",
-            key = "p",
-          },
-          {
-            action = [[:!glab mr view --web<CR>]],
-            desc = ' Merge Request',
-            icon = ' ',
-            key = 'm',
-          },
-          {
-            action = 'qa',
-            desc = ' Quit',
-            icon = ' ',
-            key = 'q',
-          },
+    ]],
+        -- stylua: ignore
+        ---@type snacks.dashboard.Item[]
+        keys = {
+          { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+          { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+          { icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('live_grep')" },
+          { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+          { icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+          { icon = " ", key = "s", desc = "Restore Session", section = "session" },
+          { icon = " ", key = "x", desc = "Lazy Extras", action = ":LazyExtras" },
+          { icon = "󰒲 ", key = "l", desc = "Lazy", action = ":Lazy" },
+          { icon = " ", key = "p", desc = " Pipelines", action = [[:lua require("daniso.util.keymaps").Gitlab_pipelines_toggle() <cr>]] },
+          { icon = ' ', key = 'm', desc = ' Merge Request', action = [[:!glab mr view --web<CR>]] },
+          { icon = " ", key = "q", desc = "Quit", action = ":qa" },
         },
-        footer = function()
-          local stats = require('lazy').stats()
-          local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)
-          return { '⚡ Neovim loaded ' .. stats.loaded .. '/' .. stats.count .. ' plugins in ' .. ms .. 'ms' }
-        end,
       },
-    }
-
-    for _, button in ipairs(opts.config.center) do
-      button.desc = button.desc .. string.rep(' ', 43 - #button.desc)
-      button.key_format = '  %s'
-    end
-
-    -- close Lazy and re-open when the dashboard is ready
-    if vim.o.filetype == 'lazy' then
-      vim.cmd.close()
-      vim.api.nvim_create_autocmd('User', {
-        pattern = 'DashboardLoaded',
-        callback = function()
-          require('lazy').show()
-        end,
-      })
-    end
-
-    return opts
-  end,
+    },
+  },
 }

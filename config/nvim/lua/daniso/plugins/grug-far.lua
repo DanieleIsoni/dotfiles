@@ -1,11 +1,10 @@
--- Find/Replace
+-- Search and Replace
 
 return {
   {
     'MagicDuck/grug-far.nvim',
-    opts = { headerMaxWidth = 80 },
-    cmd = 'GrugFar',
     keys = {
+      { '<leader>sr', false, mode = { 'n', 'v' } },
       {
         '<leader>sR',
         function()

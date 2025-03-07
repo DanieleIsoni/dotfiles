@@ -1,18 +1,23 @@
-
 return {
   {
-    'linux-cultist/venv-selector.nvim',
-    branch = 'regexp', -- Use this branch for the new version
-    cmd = 'VenvSelect',
+    'stevearc/conform.nvim',
     opts = {
-      settings = {
-        options = {
-          notify_user_on_venv_activation = true,
+      formatters = {
+        ruff_fix = {
+          append_args = { '--unsafe-fixes' },
         },
       },
+      formatters_by_ft = {
+        python = function(bufnr)
+          local formatters = { 'ruff_fix' }
+          if require('conform').get_formatter_info('black', bufnr).available then
+            table.insert(formatters, 'black')
+          else
+            table.insert(formatters, 'ruff_format')
+          end
+          return formatters
+        end,
+      },
     },
-    --  Call config for python files and load the cached venv automatically
-    ft = 'python',
-    keys = { { '<leader>cv', '<cmd>:VenvSelect<cr>', desc = '[C]ode Select [V]irtualEnv', ft = 'python' } },
   },
 }
