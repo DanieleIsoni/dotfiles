@@ -36,8 +36,8 @@ return {
       -- end,
       formatters = {
         eslintfixall = function(bufnr)
-          vim.cmd 'EslintFixAll' -- Run the ESLint fix command
-          return { command = '' } -- Return an empty table since no arguments are needed
+          -- vim.cmd 'EslintFixAll' -- Run the ESLint fix command
+          -- return { command = '' } -- Return an empty table since no arguments are needed
         end,
         ruff_fix = {
           append_args = { '--unsafe-fixes' },
@@ -46,7 +46,9 @@ return {
       formatters_by_ft = {
         go = { 'gofumpt', 'goimports' },
         javascript = { 'biome', 'eslintfixall' },
+        javascriptreact = { 'biome', 'eslintfixall' },
         typescript = { 'biome', 'eslintfixall' },
+        typescriptreact = { 'biome', 'eslintfixall' },
         json = { 'prettier' },
         lua = { 'stylua' },
         python = function(bufnr)

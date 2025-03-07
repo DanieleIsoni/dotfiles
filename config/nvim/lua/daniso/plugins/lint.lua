@@ -9,7 +9,7 @@ return {
       linters_by_ft = vim.tbl_deep_extend('force', linters_by_ft, {
         clojure = nil, -- { "clj-kondo" },
         dockerfile = { 'hadolint' },
-        go = { 'golangci_lint' },
+        -- go = { 'golangci_lint' },
         inko = nil, -- { "inko" },
         janet = nil, -- { "janet" },
         json = { 'jsonlint' },

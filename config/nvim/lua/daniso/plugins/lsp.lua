@@ -221,9 +221,12 @@ return {
             python = {
               analysis = {
                 autoImportCompletions = true,
-                typeCheckingMode = 'off',
+                typeCheckingMode = 'standard',
                 pythonPlatform = 'All',
-                analysis = { ignore = { '*' } },
+                analysis = {
+                  ignore = { '*' },
+                  stubPath = vim.fs.joinpath(vim.fn.stdpath 'data', 'lazy', 'python-type-stubs'),
+                },
               },
             },
           },

@@ -30,6 +30,7 @@ return {
   },
   {
     'willothy/flatten.nvim',
+    version = 'v0.5.1',
     opts = {
       window = {
         open = 'alternate',

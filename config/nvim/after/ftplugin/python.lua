@@ -48,9 +48,5 @@ set('n', '<leader>tcT', function()
 end, { desc = '[T]est with [C]ov Run All [T]ests' })
 
 -- debug
-vim.keymap.set('n', '<leader>dPt', function()
-  require('dap-python').test_method()
-end, { desc = '[D]ebug: [P]ython Me[t]hod' })
-vim.keymap.set('n', '<leader>dPc', function()
-  require('dap-python').test_class()
-end, { desc = '[D]ebug: [P]ython [C]lass' })
+set('n', '<leader>dPt', function() require('dap-python').test_method() end, { desc = '[D]ebug: [P]ython Me[t]hod' })
+set('n', '<leader>dPc', function() require('dap-python').test_class() end, { desc = '[D]ebug: [P]ython [C]lass' })

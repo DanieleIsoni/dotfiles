@@ -10,7 +10,8 @@ return {
       auto_suggestions_provider = 'openai_autosuggestions',
       openai = {
         endpoint = 'http://localhost:12345/api',
-        model = os.getenv 'CLAUDE_BEDROCK_ARN',
+        -- model = os.getenv 'CLAUDE_BEDROCK_ARN',
+        model = 'o3-mini',
         temperature = 0,
         max_tokens = 4096,
         -- disable_tools = true,

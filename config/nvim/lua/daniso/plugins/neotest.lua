@@ -3,17 +3,17 @@
 return {
   {
     'nvim-neotest/neotest',
-    -- opts = function(_, opts)
-    --   opts.log_level = vim.log.levels.DEBUG
-    -- end,
     dependencies = {
-      'nvim-lua/plenary.nvim',
       'nvim-neotest/nvim-nio',
+      'nvim-lua/plenary.nvim',
+      'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
       'nvim-neotest/neotest-python',
       'nvim-neotest/neotest-jest',
     },
     config = function(_, opts)
       require('neotest').setup(vim.tbl_deep_extend('force', opts, {
+        log_level = vim.log.levels.DEBUG,
         status = { virtual_text = true },
         output = { open_on_run = true },
         quickfix = {
