@@ -12,7 +12,10 @@ return {
   {
     'tpope/vim-fugitive',
     lazy = false,
-    dependencies = { 'shumphrey/fugitive-gitlab.vim' },
+    dependencies = {
+      'shumphrey/fugitive-gitlab.vim',
+      'tpope/vim-rhubarb',
+    },
     keys = {
       { '<leader>gB', ':Git blame<CR>', desc = '[G]it [B]lame' },
       { '<leader>gh', ':0GcLog<CR>', desc = '[G]it file [H]istory' },
