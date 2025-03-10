@@ -18,10 +18,10 @@ return {
           local builtin = require 'telescope.builtin'
           -- stylua: ignore start
           vim.keymap.set('n', '<leader>/', function ()
-            require('telescope').extensions.live_grep_args.live_grep_args({additional_args={"--hidden"}})
+            require('telescope').extensions.live_grep_args.live_grep_args({additional_args={"--hidden", "-g", "!.test_durations"}})
           end, { desc = '[/] Search by Grep'})
-          vim.keymap.set('n', 'gp', require('telescope-live-grep-args.shortcuts').grep_word_under_cursor, { desc = '[G]rep word under cursor' })
-          vim.keymap.set('v', 'gp', require('telescope-live-grep-args.shortcuts').grep_visual_selection, { desc = '[G]rep visual selection' })
+          vim.keymap.set('n', '<leader>sw', require('telescope-live-grep-args.shortcuts').grep_word_under_cursor, { desc = '[G]rep word under cursor' })
+          vim.keymap.set('v', '<leader>sw', require('telescope-live-grep-args.shortcuts').grep_visual_selection, { desc = '[G]rep visual selection' })
           -- stylua: ignore end
           vim.keymap.set('n', '<leader>s/', function()
             builtin.live_grep { grep_open_files = true, prompt_title = 'Live Grep in Open Files' }
