@@ -13,9 +13,9 @@ return {
       provider = 'openai',
       auto_suggestions_provider = 'openai_autosuggestions',
       openai = {
-        endpoint = 'http://localhost:12345/api',
+        endpoint = 'http://localhost:12345/',
         -- model = os.getenv 'CLAUDE_BEDROCK_ARN',
-        model = 'o3-mini',
+        model = 'claude-3.7-sonnet',
         temperature = 0,
         max_tokens = 4096,
         -- disable_tools = true,
@@ -23,7 +23,7 @@ return {
       vendors = {
         ['openai_autosuggestions'] = {
           __inherited_from = 'openai',
-          endpoint = 'http://localhost:12345/api',
+          endpoint = 'http://localhost:12345/',
           model = 'o3-mini',
           allow_insecure = false, -- Allow insecure server connections
           timeout = 30000, -- Timeout in milliseconds
