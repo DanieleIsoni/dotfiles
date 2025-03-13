@@ -18,7 +18,7 @@ return {
           local builtin = require 'telescope.builtin'
           -- stylua: ignore start
           vim.keymap.set('n', '<leader>/', function ()
-            require('telescope').extensions.live_grep_args.live_grep_args({additional_args={"--hidden", "-g", "!.test_durations"}})
+            require('telescope').extensions.live_grep_args.live_grep_args({additional_args={"--hidden", "-g!.test_durations", "-g!.git/**"}})
           end, { desc = '[/] Search by Grep'})
           vim.keymap.set('n', '<leader>sw', require('telescope-live-grep-args.shortcuts').grep_word_under_cursor, { desc = '[G]rep word under cursor' })
           vim.keymap.set('v', '<leader>sw', require('telescope-live-grep-args.shortcuts').grep_visual_selection, { desc = '[G]rep visual selection' })
