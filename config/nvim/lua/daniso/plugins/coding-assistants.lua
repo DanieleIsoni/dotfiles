@@ -10,18 +10,32 @@ return {
     version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
     opts = {
       -- add any opts here
-      provider = 'openai',
+      provider = 'claudio',
       auto_suggestions_provider = 'openai_autosuggestions',
-      openai = {
-        endpoint = 'http://localhost:12345/',
-        -- model = os.getenv 'CLAUDE_BEDROCK_ARN',
-        model = 'claude-3.7-sonnet',
-        temperature = 0,
-        max_tokens = 4096,
-        -- disable_tools = true,
-      },
       vendors = {
-        ['openai_autosuggestions'] = {
+        claudio = {
+          __inherited_from = 'openai',
+          endpoint = 'http://localhost:12345/',
+          model = 'claude-3.7-sonnet',
+          temperature = 0,
+          max_tokens = 4096,
+        },
+        claudio_ragionante = {
+          __inherited_from = 'openai',
+          endpoint = 'http://localhost:12345/',
+          model = 'claude-3.7-sonnet-reasoning',
+          temperature = 0,
+          max_tokens = 4096,
+        },
+        geppetto = {
+          __inherited_from = 'openai',
+          endpoint = 'http://localhost:12345/',
+          -- model = os.getenv 'CLAUDE_BEDROCK_ARN',
+          model = 'o3-mini',
+          temperature = 0,
+          max_tokens = 4096,
+        },
+        openai_autosuggestions = {
           __inherited_from = 'openai',
           endpoint = 'http://localhost:12345/',
           model = 'o3-mini',
