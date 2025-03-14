@@ -18,14 +18,14 @@ return {
           endpoint = 'http://localhost:12345/',
           model = 'claude-3.7-sonnet',
           temperature = 0,
-          max_tokens = 4096,
+          max_tokens = 8192,
         },
         claudio_ragionante = {
           __inherited_from = 'openai',
           endpoint = 'http://localhost:12345/',
           model = 'claude-3.7-sonnet-reasoning',
           temperature = 0,
-          max_tokens = 4096,
+          max_tokens = 8192,
         },
         geppetto = {
           __inherited_from = 'openai',
@@ -33,7 +33,7 @@ return {
           -- model = os.getenv 'CLAUDE_BEDROCK_ARN',
           model = 'o3-mini',
           temperature = 0,
-          max_tokens = 4096,
+          max_tokens = 8192,
         },
         openai_autosuggestions = {
           __inherited_from = 'openai',
