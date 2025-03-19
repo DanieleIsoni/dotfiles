@@ -1,6 +1,9 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+HISTSIZE=100000
+SAVEHIST=100000
+
 ZSH_THEME=""
 
 is_linux() { [ $(uname -s) = "Linux" ]; }
@@ -17,6 +20,7 @@ fi
 export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 plugins+=(
     brew
+    asdf
     aws-vault
     command-not-found
     docker
