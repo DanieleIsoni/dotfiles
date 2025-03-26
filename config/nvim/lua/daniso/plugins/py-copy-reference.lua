@@ -6,9 +6,9 @@ return {
   {
     'ranelpadon/python-copy-reference.vim',
     config = function()
-      vim.keymap.set('n', '<Leader>rd', ':PythonCopyReferenceDotted<CR>', { desc = 'Copy [R]eference [D]otted' })
-      vim.keymap.set('n', '<Leader>rp', ':PythonCopyReferencePytest<CR>', { desc = 'Copy [R]eference [P]ytest' })
-      vim.keymap.set('n', '<Leader>ri', ':PythonCopyReferenceImport<CR>', { desc = 'Copy [R]eference [I]mport' })
+      vim.keymap.set('n', '<Leader>cyd', ':PythonCopyReferenceDotted<CR>', { desc = '[C]ode [Y]ank Reference [D]otted' })
+      vim.keymap.set('n', '<Leader>cyp', ':PythonCopyReferencePytest<CR>', { desc = '[C]ode [Y]ank Reference [P]ytest' })
+      vim.keymap.set('n', '<Leader>cyi', ':PythonCopyReferenceImport<CR>', { desc = '[C]ode [Y]ank Reference [I]mport' })
     end,
   },
 }
