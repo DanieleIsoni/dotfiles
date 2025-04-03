@@ -13,3 +13,7 @@ name = " Nvim"
 path = "~/dotfiles/config/nvim/"
 startup_command = "nvim"
 
+[[session]]
+name = "󰎚 Scratches"
+path = "~/dev/work/scratches/"
+startup_command = "nvim"
