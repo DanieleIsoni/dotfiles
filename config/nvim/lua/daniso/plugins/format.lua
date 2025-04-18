@@ -10,7 +10,9 @@ return {
         },
       },
       formatters_by_ft = {
-        json = { 'prettier' },
+        json = { 'biome' },
+        ts = { 'biome' },
+        tsx = { 'biome' },
         python = function(bufnr)
           local formatters = { 'ruff_fix' }
           if require('conform').get_formatter_info('black', bufnr).available then
@@ -27,6 +29,6 @@ return {
   },
   {
     'williamboman/mason.nvim',
-    opts = { ensure_installed = { 'prettier', 'yamlfmt' } },
+    opts = { ensure_installed = { 'yamlfmt' } },
   },
 }
