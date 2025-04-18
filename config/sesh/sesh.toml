@@ -17,3 +17,8 @@ startup_command = "nvim"
 name = "󰎚 Scratches"
 path = "~/dev/work/scratches/"
 startup_command = "nvim"
+
+[[session]]
+name = "󱂛 Rest APIs"
+path = "~/dev/work/rest-apis/"
+startup_command = "nvim"
