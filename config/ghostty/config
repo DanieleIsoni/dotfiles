@@ -20,25 +20,27 @@ keybind = global:shift+opt+ctrl+cmd+t=toggle_quick_terminal
 
 # Tmux
 
-## [ctrl+b c] create a new tmux window
+## [ctrl+b c] tmux create a new window
 keybind = cmd+t=text:\x02c
-## [ctrl+b w] show tmux windows
+## [ctrl+b w] tmux show windows
 keybind = cmd+w=text:\x02w
-## [ctrl+b n] next tmux windows
+## [ctrl+b n] tmux next windows
 keybind = cmd+n=text:\x02n
-## [ctrl+b p] prev tmux windows
+## [ctrl+b p] tmux prev windows
 keybind = cmd+p=text:\x02p
-## [ctrl+b x] kill pane
+## [ctrl+b x] tmux kill pane
 keybind = cmd+x=text:\x02x
-## [ctrl+b d] detach
+## [ctrl+b d] tmux detach
 keybind = cmd+d=text:\x02d
-## [ctrl+b %] split vertical
+## [ctrl+b %] tmux split vertical
 keybind = cmd+five=text:\x02%
-## [ctrl+b "] split horizontal
+## [ctrl+b "] tmux split horizontal
 keybind = cmd+apostrophe=text:\x02"
-## [ctrl+b I] Install plugins
+## [ctrl+b I] tmux Install plugins
 keybind = cmd+shift+i=text:\x02I
-## [ctrl+b r] reload tmux config
+## [ctrl+b r] tmux reload config
 keybind = cmd+r=text:\x02r
-## [ctrl+b k] sesh
+## [ctrl+b k] tmux sesh
 keybind = cmd+k=text:\x02k
+## [ctrl+b z] tmux focus window
+keybind = cmd+z=text:\x02z
