@@ -4,7 +4,6 @@ git:
       pager: delta --dark --paging=never
 os:
   editPreset: nvim
-  openLink: open "$(echo "{{link}}" | sed 's/%2F/\//g')"
 gui:
   theme:
     selectedLineBgColor:
