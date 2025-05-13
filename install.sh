@@ -97,6 +97,7 @@ which vault >/dev/null || brew install hashicorp/tap/vault
 which visidata >/dev/null || brew install saulpw/vd/visidata
 which sesh >/dev/null || brew install joshmedeski/sesh/sesh
 which speedtest >/dev/null || brew install speedtest-cli
+which starship >/dev/null || brew install starship
 which tmux >/dev/null || brew install tmux
 which watchman >/dev/null || brew install watchman
 which wget >/dev/null || brew install wget
