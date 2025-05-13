@@ -199,4 +199,5 @@ export PATH="$PATH:$HOME/.local/bin"
 
 autoload -U +X bashcompinit && bashcompinit
 
+eval "$(atuin init zsh)"
 eval "$(starship init zsh)"

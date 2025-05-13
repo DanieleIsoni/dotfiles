@@ -77,6 +77,7 @@ fi
 brew tap hashicorp/tap
 
 which asdf >/dev/null || brew install asdf
+which atuin >/dev/null || brew install atuin
 which aws >/dev/null || brew install awscli
 which bat >/dev/null || brew install bat
 which bw >/dev/null || brew install bitwarden-cli
@@ -159,7 +160,6 @@ if [ ! -f $STARSHIP_CONFIG ]; then
     ln -sf $DOTFILES_CONFIG_DIR/starship.toml $STARSHIP_CONFIG
 fi
 
-
 ## Tmux
 TMUX_CONFIG_DIR="$CONFIG_DIR/tmux"
 if [ ! -d $TMUX_CONFIG_DIR ]; then
@@ -182,6 +182,12 @@ fi
 SESH_CONFIG_DIR="$CONFIG_DIR/sesh"
 if [ ! -d $SESH_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/sesh $SESH_CONFIG_DIR
+fi
+
+## Atuin
+ATUIN_CONFIG="$CONFIG_DIR/atuin/config.toml"
+if [ ! -f $ATUIN_CONFIG ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/atuin/config.toml $ATUIN_CONFIG
 fi
 
 ## Neovim
