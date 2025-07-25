@@ -1,4 +1,8 @@
 [[session]]
+name = " Home"
+path = "~"
+
+[[session]]
 name = "📥 Downloads"
 path = "~/Downloads/"
 startup_command = "y"
