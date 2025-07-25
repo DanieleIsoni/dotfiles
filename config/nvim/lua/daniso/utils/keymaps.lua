@@ -27,7 +27,7 @@ end
 
 -- gitlab
 local gitlab_pipelines = Terminal:new {
-  cmd = 'glab pipeline ci view',
+  cmd = 'glab ci status -lc',
   count = 6,
   dir = 'git_dir',
   close_on_exit = false,
