@@ -3,6 +3,7 @@
 return {
   {
     'MagicDuck/grug-far.nvim',
+    lazy = false,
     keys = {
       { '<leader>sr', false, mode = { 'n', 'v' } },
       {
