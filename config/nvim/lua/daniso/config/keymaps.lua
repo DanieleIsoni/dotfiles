@@ -20,6 +20,15 @@ set('n', '<leader>qq', '<cmd>qa<cr>', { desc = '[Q]uit all [q]' })
 -- Compare to clipboard
 set('x', '<Leader>cc', KeymapUtil.Compare_to_clipboard, { desc = '[C]ompare to [C]lipboard' })
 
+-- Claude Code
+require('which-key').add { { '<leader>a', group = 'Assistants', icon = '' } }
+set('n', '<leader>aa', function()
+  Snacks.terminal('claude', { cwd = LazyVim.root(), win = { position = 'right', width = 0.33 } })
+end, { desc = '[C]laude [C]ode' })
+set('n', '<leader>ar', function()
+  Snacks.terminal('source ~/.custom-rc && clauderock', { cwd = LazyVim.root(), win = { position = 'right', width = 0.5 } })
+end, { desc = '[C]laude Code Bed[R]ock' })
+
 -- gitlab
 set('n', '<leader>gP', KeymapUtil.Gitlab_pipelines_toggle, { noremap = true, silent = true, desc = '[G]itlab [P]ipeline (current branch)' })
 set('n', '<leader>gm', '<cmd>!glab mr view --web<cr>', { noremap = true, silent = true, desc = '[G]itlab open [M]erge request (current branch)' })
