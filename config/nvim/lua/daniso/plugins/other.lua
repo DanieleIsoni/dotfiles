@@ -20,9 +20,9 @@ return {
         },
         {
           pattern = 'ts/src/(.*)/(.*).tsx$',
-          target = 'ts/src/%1/%2.less',
+          target = 'ts/src/%1/%2.scss',
           transformer = 'lowercase',
-          context = 'less',
+          context = 'scss',
         },
         {
           pattern = 'ts/tests/(.*)/(.*).test.tsx$',
@@ -47,7 +47,7 @@ return {
           context = 'snap',
         },
         {
-          pattern = 'ts/src/(.*)/(.*).less$',
+          pattern = 'ts/src/(.*)/(.*).scss$',
           target = 'ts/src/%1/%2.tsx',
           transformer = 'lowercase',
         },
@@ -88,9 +88,9 @@ return {
       { 'got', ':Other test<CR>', desc = '[G]oto [O]ther [T]est' },
       { 'gost', ':OtherSplit test<CR>', desc = '[G]oto [O]ther [S]plit [T]est' },
       { 'govt', ':OtherVSplit test<CR>', desc = '[G]oto [O]ther [V]-split [T]est' },
-      { 'gol', ':Other less<CR>', desc = '[G]oto [O]ther [L]ess' },
-      { 'gosl', ':OtherSplit less<CR>', desc = '[G]oto [O]ther [S]plit [L]ess' },
-      { 'govl', ':OtherVSplit less<CR>', desc = '[G]oto [O]ther [V]-split [L]ess' },
+      { 'goc', ':Other scss<CR>', desc = '[G]oto [O]ther [S]css' },
+      { 'gosc', ':OtherSplit scss<CR>', desc = '[G]oto [O]ther [S]plit [S]css' },
+      { 'govc', ':OtherVSplit scss<CR>', desc = '[G]oto [O]ther [V]-split [S]css' },
       { 'gom', ':Other mjml-email<CR>', desc = '[G]oto [O]ther [M]jml-email' },
       { 'gosm', ':OtherSplit mjml-email<CR>', desc = '[G]oto [O]ther [S]plit [M]jml-email' },
       { 'govm', ':OtherVSplit mjml-email<CR>', desc = '[G]oto [O]ther [V]-split [M]jml-email' },
