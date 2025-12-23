@@ -26,3 +26,8 @@ startup_command = "nvim"
 name = "󱂛 Rest APIs"
 path = "~/dev/work/rest-apis/"
 startup_command = "nvim"
+
+[[session]]
+name = " Obsidian"
+path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/"
+startup_command = "nvim"
