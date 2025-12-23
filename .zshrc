@@ -36,8 +36,9 @@ plugins+=(
     terraform
     uv
     zoxide
-    zsh-syntax-highlighting
     zsh-autosuggestions
+    zsh-syntax-highlighting
+    zsh-vim-mode
 )
 
 
@@ -126,6 +127,9 @@ alias glo="git log --oneline --decorate --pretty='%C(yellow)%h%Creset %C(auto)%d
 alias gl="git pull --rebase"
 alias lg="lazygit"
 
+# docker
+alias ld="lazydocker"
+
 # Run programs
 if is_macos; then
     alias feature_name="pbpaste | tr '[:upper:]' '[:lower:]' | tr ' _' '-' | tr -cd '[:alnum:]-' | sed 's/zebra/ZEBRA/' | sed 's/kiwi/KIWI/'"
@@ -200,4 +204,4 @@ export PATH="$PATH:$HOME/.local/bin"
 autoload -U +X bashcompinit && bashcompinit
 
 eval "$(atuin init zsh)"
-eval "$(starship init zsh)"
+type starship_zle-keymap-select >/dev/null || eval "$(starship init zsh)"
