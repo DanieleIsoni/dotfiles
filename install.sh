@@ -84,6 +84,7 @@ which bw >/dev/null || brew install bitwarden-cli
 which delta >/dev/null || brew install git-delta
 which fd >/dev/null || brew install fd
 which fzf >/dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc)
+which ghostty >/dev/null || brew install --cask ghostty
 which git >/dev/null || brew install git
 which git-flow >/dev/null || brew install git-flow-avh
 which gum >/dev/null || brew install gum
