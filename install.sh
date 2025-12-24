@@ -1,15 +1,10 @@
 #!/bin/zsh
 
-if [ -n "$CODESPACES" ]; then
-    DOTFILES_DIR="/workspaces/.codespaces/.persistedshare/dotfiles"
-else
-    DOTFILES_DIR="$HOME/dotfiles"
-fi
+echo "export DOTFILES_DIR=$(dirname $(realpath "$0"))" > $HOME/.dotfiles-dir
+source $HOME/.dotfiles-dir
+source $DOTFILES_DIR/utils.sh
 
 export USERNAME=$(whoami)
-
-is_linux() { [ $(uname -s) = "Linux" ]; }
-is_macos() { [ $(uname -s) = "Darwin" ]; }
 
 if is_linux; then
     sudo apt update
@@ -32,10 +27,13 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+if IS_WORK && [ ! -f ~/.work-plugins.zshrc ]; then
+    ln -sf $DOTFILES_DIR/.work-plugins.zshrc ~/.work-plugins.zshrc
+fi
+
 if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.old
 fi
-
 ln -sf $DOTFILES_DIR/.zshrc ~/.zshrc
 if is_linux; then sudo chsh -s /usr/bin/zsh $USERNAME; fi
 
@@ -70,18 +68,17 @@ GIT_AUTO_STATUS_DIR=$OMZ_CUSTOM_PLUGINS/git-auto-status
 if [ ! -d $GIT_AUTO_STATUS_DIR ]; then
     ln -sf $DOTFILES_DIR/oh-my-zsh/custom/plugins/git-auto-status $GIT_AUTO_STATUS_DIR
 fi
-AWS_VAULT_DIR=$OMZ_CUSTOM_PLUGINS/aws-vault
-if [ ! -d $AWS_VAULT_DIR ]; then
-    mkdir $AWS_VAULT_DIR
-    curl -o $AWS_VAULT_DIR/aws-vault.plugin.zsh https://raw.githubusercontent.com/99designs/aws-vault/master/contrib/completions/zsh/aws-vault.zsh
+if IS_WORK; then
+    AWS_VAULT_DIR=$OMZ_CUSTOM_PLUGINS/aws-vault
+    if [ ! -d $AWS_VAULT_DIR ]; then
+        mkdir $AWS_VAULT_DIR
+        curl -o $AWS_VAULT_DIR/aws-vault.plugin.zsh https://raw.githubusercontent.com/99designs/aws-vault/master/contrib/completions/zsh/aws-vault.zsh
+    fi
 fi
 
 # install some things
-brew tap hashicorp/tap
-
 which asdf >/dev/null || brew install asdf
 which atuin >/dev/null || brew install atuin
-which aws >/dev/null || brew install awscli
 which bat >/dev/null || brew install bat
 which bw >/dev/null || brew install bitwarden-cli
 which delta >/dev/null || brew install git-delta
@@ -93,25 +90,31 @@ which git-flow >/dev/null || brew install git-flow-avh
 which gum >/dev/null || brew install gum
 which jq >/dev/null || brew install jq
 which lazygit >/dev/null || brew install lazygit
-which nu >/dev/null || brew install nushell
+# which nu >/dev/null || brew install nushell
 which nvim >/dev/null || brew install neovim
 which rich >/dev/null || brew install rich-cli
 which rg >/dev/null || brew install ripgrep
-which vault >/dev/null || brew install hashicorp/tap/vault
 which visidata >/dev/null || brew install saulpw/vd/visidata
 which sesh >/dev/null || brew install joshmedeski/sesh/sesh
 which speedtest >/dev/null || brew install speedtest-cli
 which starship >/dev/null || brew install starship
 which tmux >/dev/null || brew install tmux
-which watchman >/dev/null || brew install watchman
+which uv >/dev/null || brew install uv
 which wget >/dev/null || brew install wget
 which yazi >/dev/null || brew install yazi ffmpegthumbnailer ffmpeg sevenzip poppler imagemagick
 which zoxide >/dev/null || brew install zoxide
 
-which aws-vault >/dev/null || brew install --cask aws-vault
+if IS_WORK; then
+    which aws >/dev/null || brew install awscli
+    which aws-vault >/dev/null || brew install --cask aws-vault
+    brew tap hashicorp/tap
+    which vault >/dev/null || brew install hashicorp/tap/vault
+    which watchman >/dev/null || brew install watchman
+fi
 
 if is_macos; then
     which arc >/dev/null || brew install arc
+    which orb >/dev/null || brew install orbstack
 
     command -v mas >/dev/null
     if [ $? -ne 0 ]; then
@@ -123,30 +126,31 @@ if is_macos; then
         fi
     fi
 
-    which orb >/dev/null || brew install orbstack
-    which tailscale >/dev/null || brew install tailscale
-
     brew install --cask logi-options-plus
     brew install --cask raycast
     brew install --cask rectangle
     brew install --cask stats
 
     mas install 1352778147 # Bitwarden
-    mas install 1438243180 # Dark Reader for Safari
-    mas install 905953485  # NordVPN
     mas install 1429033973 # RunCat
-    mas install 803453959  # Slack
     mas install 1475387142 # Tailscale
     mas install 747648890  # Telegram
     mas install 1607635845 # Velja
     mas install 310633997 # WhatsApp
+
+    if IS_WORK; then
+        mas install 803453959  # Slack
+    fi
+
 fi
 
 if is_linux; then
     which tailscale >/dev/null || curl -fsSL https://tailscale.com/install.sh | sh
 fi
 
-mkdir .virtualenvs
+if [ ! -d "$HOME/.virtualenvs" ]; then
+    mkdir ~/.virtualenvs
+fi
 
 # Configs
 
@@ -162,12 +166,12 @@ if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
 fi
 
 ## Nushell
-NUSHELL_CONFIG_DIR="$HOME/Library/Application Support/nushell"
-NUSHELL_XDG_CONFIG_DIR="$CONFIG_DIR/nushell"
-if [ ! -d $NUSHELL_XDG_CONFIG_DIR ]; then
-    ln -sf $DOTFILES_CONFIG_DIR/nushell $NUSHELL_XDG_CONFIG_DIR
-    ln -sf $NUSHELL_XDG_CONFIG_DIR $NUSHELL_CONFIG_DIR
-fi
+# NUSHELL_CONFIG_DIR="$HOME/Library/Application Support/nushell"
+# NUSHELL_XDG_CONFIG_DIR="$CONFIG_DIR/nushell"
+# if [ ! -d $NUSHELL_XDG_CONFIG_DIR ]; then
+#     ln -sf $DOTFILES_CONFIG_DIR/nushell $NUSHELL_XDG_CONFIG_DIR
+#     ln -sf $NUSHELL_XDG_CONFIG_DIR $NUSHELL_CONFIG_DIR
+# fi
 
 ## Starship
 STARSHIP_CONFIG="$CONFIG_DIR/starship.toml"
@@ -229,4 +233,4 @@ source ~/.zshrc
 
 zsh $HOME/.asdf/asdf.sh
 
-zsh $DOTFILES_DIR/install-asdf-plugins.sh
+WORK=$WORK zsh $DOTFILES_DIR/install-asdf-plugins.sh

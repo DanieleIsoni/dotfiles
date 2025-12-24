@@ -6,8 +6,8 @@ SAVEHIST=100000
 
 ZSH_THEME=""
 
-is_linux() { [ $(uname -s) = "Linux" ]; }
-is_macos() { [ $(uname -s) = "Darwin" ]; }
+source $HOME/.dotfiles-dir
+source $DOTFILES_DIR/utils.sh # has is_macos and is_linux funcs
 
 plugins=()
 
@@ -21,7 +21,6 @@ export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 plugins+=(
     brew
     asdf
-    aws-vault
     command-not-found
     docker
     docker-compose
@@ -31,9 +30,7 @@ plugins+=(
     git-flow
     git-auto-fetch
     git-auto-status
-    kubectl
     poetry
-    terraform
     uv
     zoxide
     zsh-autosuggestions
@@ -41,6 +38,10 @@ plugins+=(
     zsh-vi-mode
 )
 
+WORK_PLUGINS_RC=~/.work-plugins.zshrc
+if [ -f $WORK_PLUGINS_RC ]; then
+    source $WORK_PLUGINS_RC;
+fi
 
 CUSTOM_PLUGINS_RC=~/.custom-plugins-rc
 if [ -f $CUSTOM_PLUGINS_RC ]; then
