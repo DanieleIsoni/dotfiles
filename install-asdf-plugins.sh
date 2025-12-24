@@ -2,33 +2,37 @@
 
 echo "Installing python with asdf"
 asdf plugin add python
-asdf install python latest
-asdf global python latest
+LASTEST_PY=$(asdf latest python)
+if [[ "$LASTEST_PY" = *t ]]; then
+    LASTEST_PY="${LASTEST_PY::-1}"
+fi
+asdf set -u python $LASTEST_PY
+asdf install python
 
 echo "Installing go with asdf"
 asdf plugin add golang
-asdf install golang latest
-asdf global golang latest
+asdf set -u golang latest
+asdf install golang
 
 echo "Installing nodejs with asdf"
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf install nodejs latest
-asdf global nodejs latest
+asdf set -u nodejs latest
+asdf install nodejs
 
 echo "Installing poetry with asdf"
 asdf plugin add poetry
-asdf install poetry latest
-asdf global poetry latest
+asdf set -u poetry latest
+asdf install poetry
 
 echo "Installing kubectl with asdf"
 asdf plugin add kubectl
-asdf install kubectl latest:1.24
-asdf global kubectl latest:1.24
+asdf set -u kubectl latest:1.24
+asdf install kubectl
 
 echo "Installing teleport with asdf"
 asdf plugin add teleport https://github.com/jorpilo/asdf-teleport.git
-asdf install teleport 16.4.9
-asdf global teleport 16.4.9   
+asdf set -u teleport 16.4.9
+asdf install teleport
 
 pythonLatest=$(asdf where python)
 if [ $pythonLatest ]; then

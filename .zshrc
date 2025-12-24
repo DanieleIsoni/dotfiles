@@ -38,7 +38,7 @@ plugins+=(
     zoxide
     zsh-autosuggestions
     zsh-syntax-highlighting
-    zsh-vim-mode
+    zsh-vi-mode
 )
 
 
@@ -203,5 +203,6 @@ export PATH="$PATH:$HOME/.local/bin"
 
 autoload -U +X bashcompinit && bashcompinit
 
-eval "$(atuin init zsh)"
+# Atuin
+zvm_after_init_commands+=(eval "$(atuin init zsh)")
 type starship_zle-keymap-select >/dev/null || eval "$(starship init zsh)"

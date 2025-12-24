@@ -45,7 +45,6 @@ OMZ_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
 
 # install fonts
 if is_macos; then
-    brew tap homebrew/cask-fonts
     brew install --cask font-jetbrains-mono-nerd-font
 fi
 
@@ -58,6 +57,10 @@ fi
 ZSH_SYNTAX_HIGHLIGHTING_DIR=$OMZ_CUSTOM_PLUGINS/zsh-syntax-highlighting
 if [ ! -d $ZSH_SYNTAX_HIGHLIGHTING_DIR ]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_SYNTAX_HIGHLIGHTING_DIR
+fi
+ZSH_VI_MODE_DIR=$OMZ_CUSTOM_PLUGINS/zsh-vi-mode
+if [ ! -d $ZSH_VI_MODE_DIR ]; then
+    git clone https://github.com/jeffreytse/zsh-vi-mode $ZSH_VI_MODE_DIR
 fi
 FZF_TAB_DIR=$OMZ_CUSTOM_PLUGINS/fzf-tab
 if [ ! -d $FZF_TAB_DIR ]; then
@@ -109,7 +112,17 @@ which aws-vault >/dev/null || brew install --cask aws-vault
 
 if is_macos; then
     which arc >/dev/null || brew install arc
-    which mas >/dev/null || brew install mas
+
+    command -v mas >/dev/null
+    if [ $? -ne 0 ]; then
+        if [ $(uname -p) = i386 ]; then
+            echo "\033[0;31mInstall mas from https://github.com/mas-cli/mas/releases since you are on an Intel Mac\033[0m";
+            exit 1;
+        else
+            which mas >/dev/null || brew install mas
+        fi
+    fi
+
     which orb >/dev/null || brew install orbstack
     which tailscale >/dev/null || brew install tailscale
 
@@ -126,7 +139,7 @@ if is_macos; then
     mas install 1475387142 # Tailscale
     mas install 747648890  # Telegram
     mas install 1607635845 # Velja
-    mas install 1147396723 # WhatsApp
+    mas install 310633997 # WhatsApp
 fi
 
 if is_linux; then
@@ -188,9 +201,10 @@ fi
 
 ## Atuin
 ATUIN_CONFIG="$CONFIG_DIR/atuin/config.toml"
-if [ ! -f $ATUIN_CONFIG ]; then
-    ln -sf $DOTFILES_CONFIG_DIR/atuin/config.toml $ATUIN_CONFIG
+if [ -f $ATUIN_CONFIG ]; then
+    mv $ATUIN_CONFIG "${ATUIN_CONFIG}.old"
 fi
+ln -sf $DOTFILES_CONFIG_DIR/atuin/config.toml $ATUIN_CONFIG
 
 ## Neovim
 NVIM_CONFIG_DIR="$CONFIG_DIR/nvim"
