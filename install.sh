@@ -81,6 +81,7 @@ which asdf >/dev/null || brew install asdf
 which atuin >/dev/null || brew install atuin
 which bat >/dev/null || brew install bat
 which bw >/dev/null || brew install bitwarden-cli
+which bytop >/dev/null || brew install bytop
 which delta >/dev/null || brew install git-delta
 which fd >/dev/null || brew install fd
 which fzf >/dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc)
@@ -89,7 +90,10 @@ which git >/dev/null || brew install git
 which git-flow >/dev/null || brew install git-flow-avh
 which gum >/dev/null || brew install gum
 which jq >/dev/null || brew install jq
+which lazydocker >/dev/null || brew install lazydocker
 which lazygit >/dev/null || brew install lazygit
+which lazysql >/dev/null || brew install lazysql
+which mosh >/dev/null || brew install mosh
 # which nu >/dev/null || brew install nushell
 which nvim >/dev/null || brew install neovim
 which rich >/dev/null || brew install rich-cli
@@ -107,6 +111,9 @@ which zoxide >/dev/null || brew install zoxide
 if IS_WORK; then
     which aws >/dev/null || brew install awscli
     which aws-vault >/dev/null || brew install --cask aws-vault
+    which copier >/dev/null || brew install copier
+    which git-lfs >/dev/null || brew install git-lfs
+    which glab >/dev/null || brew install glab
     brew tap hashicorp/tap
     which vault >/dev/null || brew install hashicorp/tap/vault
     which watchman >/dev/null || brew install watchman
@@ -116,33 +123,33 @@ if is_macos; then
     which arc >/dev/null || brew install arc
     which orb >/dev/null || brew install orbstack
 
-    command -v mas >/dev/null
-    if [ $? -ne 0 ]; then
-        if [ $(uname -p) = i386 ]; then
-            echo "\033[0;31mInstall mas from https://github.com/mas-cli/mas/releases since you are on an Intel Mac\033[0m";
-            exit 1;
-        else
-            which mas >/dev/null || brew install mas
-        fi
-    fi
-
+    brew install rocket
+    brew install shortcat
+    # brew install --cask TheBoredTeam/boring-notch/boring-notch --no-quarantine
+    brew install --cask jordanbaird-ice
     brew install --cask karabiner-elements
     brew install --cask logi-options-plus
     brew install --cask raycast
     brew install --cask rectangle
     brew install --cask stats
 
-    mas install 1352778147 # Bitwarden
-    mas install 1429033973 # RunCat
-    mas install 1475387142 # Tailscale
-    mas install 747648890  # Telegram
-    mas install 1607635845 # Velja
-    mas install 310633997 # WhatsApp
-
-    if IS_WORK; then
-        mas install 803453959  # Slack
+    if IS_WORK; then true; else
+        command -v mas >/dev/null
+        if [ $? -ne 0 ]; then
+            if [ $(uname -p) = i386 ]; then
+                echo "\033[0;31mInstall mas from https://github.com/mas-cli/mas/releases since you are on an Intel Mac\033[0m";
+                exit 1;
+            else
+                which mas >/dev/null || brew install mas
+            fi
+        fi
+        mas install 1352778147 # Bitwarden
+        mas install 1429033973 # RunCat
+        mas install 1475387142 # Tailscale
+        mas install 747648890  # Telegram
+        mas install 1607635845 # Velja
+        mas install 310633997 # WhatsApp
     fi
-
 fi
 
 if is_linux; then
