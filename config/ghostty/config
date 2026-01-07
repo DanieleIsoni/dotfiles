@@ -46,6 +46,3 @@ keybind = cmd+k=text:\x02k
 keybind = cmd+z=text:\x02z
 ## [ctrl+b [] tmux copy mode
 keybind = cmd+s=text:\x02[
-
-# Claude Code
-keybind = shift+enter=text:\n
