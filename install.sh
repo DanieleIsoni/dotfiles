@@ -126,6 +126,7 @@ if is_macos; then
         fi
     fi
 
+    brew install --cask karabiner-elements
     brew install --cask logi-options-plus
     brew install --cask raycast
     brew install --cask rectangle
@@ -163,6 +164,12 @@ mkdir -p $CONFIG_DIR
 GHOSTTY_CONFIG_DIR="$CONFIG_DIR/ghostty"
 if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/ghostty $GHOSTTY_CONFIG_DIR
+fi
+
+## KarabinerElements
+KARABINER_CONFIG_DIR="$CONFIG_DIR/karabiner"
+if [ ! -d $KARABINER_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/karabiner $KARABINER_CONFIG_DIR
 fi
 
 ## Nushell

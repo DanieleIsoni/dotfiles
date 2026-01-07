@@ -8,6 +8,9 @@ config/nvim/lazy-lock.json
 config/tmux/plugins/**/*
 !config/tmux/plugins/.gitkeep
 
+# karabiner
+config/karabiner/automatic_backups
+
 # lazygit
 config/lazygit/state.yml
 
