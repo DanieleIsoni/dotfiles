@@ -29,13 +29,18 @@ asdf install poetry
 if IS_WORK; then
     echo "Installing kubectl with asdf"
     asdf plugin add kubectl
-    asdf set -u kubectl latest:1.24
+    asdf set -u kubectl latest:1.28
     asdf install kubectl
 
+    echo "Installing process-compose with asdf"
+    asdf plugin add process-compose
+    asdf set -u process-compose latest
+    asdf install process-compose
+
     echo "Installing teleport with asdf"
-    asdf plugin add teleport https://github.com/jorpilo/asdf-teleport.git
-    asdf set -u teleport 16.4.9
-    asdf install teleport
+    asdf plugin add teleport-community
+    asdf set -u teleport-community 16.5.5
+    asdf install teleport-community
 fi
 
 pythonLatest=$(asdf where python)
