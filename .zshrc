@@ -17,10 +17,9 @@ if is_macos; then
     )
 fi
 
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 plugins+=(
     brew
-    asdf
+    mise
     command-not-found
     docker
     docker-compose
@@ -88,7 +87,7 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/dev
 
 # Python Virtualenvwrapper
-pythonPath=$(dirname "$(asdf which python)")
+pythonPath=$(dirname "$(mise which python)")
 source $pythonPath/virtualenvwrapper.sh
 
 alias wo=workon
@@ -208,4 +207,9 @@ autoload -U +X bashcompinit && bashcompinit
 
 # Atuin
 zvm_after_init_commands+=(eval "$(atuin init zsh)")
+
+# Rust
+. $HOME/.cargo/env
+
+# Starship
 type starship_zle-keymap-select >/dev/null || eval "$(starship init zsh)"

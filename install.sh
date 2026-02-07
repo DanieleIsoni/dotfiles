@@ -77,7 +77,7 @@ if IS_WORK; then
 fi
 
 # install some things
-which asdf >/dev/null || brew install asdf
+which mise >/dev/null || brew install mise
 which atuin >/dev/null || brew install atuin
 which bat >/dev/null || brew install bat
 which bw >/dev/null || brew install bitwarden-cli
@@ -181,12 +181,6 @@ if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/ghostty $GHOSTTY_CONFIG_DIR
 fi
 
-## KarabinerElements
-KARABINER_CONFIG_DIR="$CONFIG_DIR/karabiner"
-if [ ! -d $KARABINER_CONFIG_DIR ]; then
-    ln -sf $DOTFILES_CONFIG_DIR/karabiner $KARABINER_CONFIG_DIR
-fi
-
 ## Nushell
 # NUSHELL_CONFIG_DIR="$HOME/Library/Application Support/nushell"
 # NUSHELL_XDG_CONFIG_DIR="$CONFIG_DIR/nushell"
@@ -232,10 +226,16 @@ if [ -f $ATUIN_CONFIG ]; then
 fi
 ln -sf $DOTFILES_CONFIG_DIR/atuin/config.toml $ATUIN_CONFIG
 
-## Neovim
-NVIM_CONFIG_DIR="$CONFIG_DIR/nvim"
-if [ ! -d $NVIM_CONFIG_DIR ]; then
-    ln -sf $DOTFILES_CONFIG_DIR/nvim $NVIM_CONFIG_DIR
+## Docker
+DOCKER_CONFIG_DIR="$CONFIG_DIR/docker"
+if [ ! -d $DOCKER_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/docker $DOCKER_CONFIG_DIR
+fi
+
+## KarabinerElements
+KARABINER_CONFIG_DIR="$CONFIG_DIR/karabiner"
+if [ ! -d $KARABINER_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/karabiner $KARABINER_CONFIG_DIR
 fi
 
 ## LazyGit
@@ -244,20 +244,24 @@ if [ ! -d $LAZYGIT_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/lazygit $LAZYGIT_CONFIG_DIR
 fi
 
+## Mise
+MISE_CONFIG_DIR="$CONFIG_DIR/mise"
+if [ ! -d $MISE_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/mise $MISE_CONFIG_DIR
+fi
+
+## Neovim
+NVIM_CONFIG_DIR="$CONFIG_DIR/nvim"
+if [ ! -d $NVIM_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/nvim $NVIM_CONFIG_DIR
+fi
+
 ## YamlFmt
 YAMLFMT_CONFIG_DIR="$CONFIG_DIR/yamlfmt"
 if [ ! -d $YAMLFMT_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/yamlfmt $YAMLFMT_CONFIG_DIR
 fi
 
-## Docker
-DOCKER_CONFIG_DIR="$CONFIG_DIR/docker"
-if [ ! -d $DOCKER_CONFIG_DIR ]; then
-    ln -sf $DOTFILES_CONFIG_DIR/docker $DOCKER_CONFIG_DIR
-fi
-
 source ~/.zshrc
 
-zsh $HOME/.asdf/asdf.sh
-
-WORK=$WORK zsh $DOTFILES_DIR/install-asdf-plugins.sh
+WORK=$WORK zsh $DOTFILES_DIR/install-mise-plugins.sh
