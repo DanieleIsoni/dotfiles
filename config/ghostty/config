@@ -32,10 +32,10 @@ keybind = cmd+p=text:\x02p
 keybind = cmd+x=text:\x02x
 ## [ctrl+b d] tmux detach
 keybind = cmd+d=text:\x02d
-## [ctrl+b %] tmux split vertical
-keybind = cmd+five=text:\x02%
-## [ctrl+b "] tmux split horizontal
-keybind = cmd+apostrophe=text:\x02"
+## [ctrl+b \] tmux split vertical
+keybind = cmd+\=text:\x02\\
+## [ctrl+b -] tmux split horizontal
+keybind = cmd+-=text:\x02-
 ## [ctrl+b I] tmux Install plugins
 keybind = cmd+shift+i=text:\x02I
 ## [ctrl+b r] tmux reload config
