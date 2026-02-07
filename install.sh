@@ -242,6 +242,11 @@ if [ ! -d $YAMLFMT_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/yamlfmt $YAMLFMT_CONFIG_DIR
 fi
 
+## Docker
+DOCKER_CONFIG_DIR="$CONFIG_DIR/docker"
+if [ ! -d $DOCKER_CONFIG_DIR ]; then
+    ln -sf $DOTFILES_CONFIG_DIR/docker $DOCKER_CONFIG_DIR
+fi
 
 source ~/.zshrc
 
