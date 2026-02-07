@@ -27,10 +27,6 @@ if [ ! -d $HOME/.oh-my-zsh ]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-if IS_WORK && [ ! -f ~/.work-plugins.zshrc ]; then
-    ln -sf $DOTFILES_DIR/.work-plugins.zshrc ~/.work-plugins.zshrc
-fi
-
 if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.old
 fi
@@ -68,13 +64,6 @@ GIT_AUTO_STATUS_DIR=$OMZ_CUSTOM_PLUGINS/git-auto-status
 if [ ! -d $GIT_AUTO_STATUS_DIR ]; then
     ln -sf $DOTFILES_DIR/oh-my-zsh/custom/plugins/git-auto-status $GIT_AUTO_STATUS_DIR
 fi
-if IS_WORK; then
-    AWS_VAULT_DIR=$OMZ_CUSTOM_PLUGINS/aws-vault
-    if [ ! -d $AWS_VAULT_DIR ]; then
-        mkdir $AWS_VAULT_DIR
-        curl -o $AWS_VAULT_DIR/aws-vault.plugin.zsh https://raw.githubusercontent.com/99designs/aws-vault/master/contrib/completions/zsh/aws-vault.zsh
-    fi
-fi
 
 # install some things
 which mise >/dev/null || brew install mise
@@ -110,19 +99,6 @@ which wget >/dev/null || brew install wget
 which yazi >/dev/null || brew install yazi ffmpegthumbnailer ffmpeg sevenzip poppler imagemagick
 which zoxide >/dev/null || brew install zoxide
 
-if IS_WORK; then
-    which aws >/dev/null || brew install awscli
-    which aws-vault >/dev/null || brew install --cask aws-vault
-    which copier >/dev/null || brew install copier
-    which git-lfs >/dev/null || brew install git-lfs
-    which glab >/dev/null || brew install glab
-    brew tap hashicorp/tap
-    which vault >/dev/null || brew install hashicorp/tap/vault
-    which vault-token-helper || brew install joemiller/taps/vault-token-helper
-    if [ ! -f "$HOME"/.vault ]; then vault-token-helper enable; fi
-    which watchman >/dev/null || brew install watchman
-fi
-
 if is_macos; then
     # change spacing in menu bar
     defaults -currentHost write -globalDomain NSStatusItemSpacing -int 8
@@ -133,31 +109,29 @@ if is_macos; then
     brew install bitwarden
     brew install rocket
     brew install shortcat
+    brew install --cask TheBoredTeam/boring-notch/boring-notch
     brew install --cask jordanbaird-ice
     brew install --cask karabiner-elements
+    brew install --cask logi-options-plus
     brew install --cask raycast
     brew install --cask rectangle
     brew install --cask stats
 
-    if IS_WORK; then true; else
-        brew install --cask TheBoredTeam/boring-notch/boring-notch
-        brew install --cask logi-options-plus
 
-        command -v mas >/dev/null
-        if [ $? -ne 0 ]; then
-            if [ $(uname -p) = i386 ]; then
-                echo "\033[0;31mInstall mas from https://github.com/mas-cli/mas/releases since you are on an Intel Mac\033[0m";
-                exit 1;
-            else
-                which mas >/dev/null || brew install mas
-            fi
+    command -v mas >/dev/null
+    if [ $? -ne 0 ]; then
+        if [ $(uname -p) = i386 ]; then
+            echo "\033[0;31mInstall mas from https://github.com/mas-cli/mas/releases since you are on an Intel Mac\033[0m";
+            exit 1;
+        else
+            which mas >/dev/null || brew install mas
         fi
-        mas install 1429033973 # RunCat
-        mas install 1475387142 # Tailscale
-        mas install 747648890  # Telegram
-        mas install 1607635845 # Velja
-        mas install 310633997 # WhatsApp
     fi
+    mas install 1429033973 # RunCat
+    mas install 1475387142 # Tailscale
+    mas install 747648890  # Telegram
+    mas install 1607635845 # Velja
+    mas install 310633997 # WhatsApp
 fi
 
 if is_linux; then
@@ -264,4 +238,4 @@ fi
 
 source ~/.zshrc
 
-WORK=$WORK zsh $DOTFILES_DIR/install-mise-plugins.sh
+zsh $DOTFILES_DIR/install-mise-plugins.sh

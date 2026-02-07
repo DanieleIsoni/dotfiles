@@ -37,11 +37,6 @@ plugins+=(
     zsh-vi-mode
 )
 
-WORK_PLUGINS_RC=~/.work-plugins.zshrc
-if [ -f $WORK_PLUGINS_RC ]; then
-    source $WORK_PLUGINS_RC;
-fi
-
 CUSTOM_PLUGINS_RC=~/.custom-plugins-rc
 if [ -f $CUSTOM_PLUGINS_RC ]; then
     source $CUSTOM_PLUGINS_RC;
