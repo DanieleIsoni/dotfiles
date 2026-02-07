@@ -26,7 +26,7 @@ set('n', '<leader>aa', function()
   Snacks.terminal('claude', { cwd = LazyVim.root(), win = { position = 'right', width = 0.33 } })
 end, { desc = '[C]laude [C]ode' })
 set('n', '<leader>ar', function()
-  Snacks.terminal('source ~/.custom-rc && clauderock', { cwd = LazyVim.root(), win = { position = 'right', width = 0.5 } })
+  Snacks.terminal('source ~/.custom-rc && claudio', { cwd = LazyVim.root(), win = { position = 'right', width = 0.5 } })
 end, { desc = '[C]laude Code Bed[R]ock' })
 
 -- gitlab
