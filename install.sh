@@ -81,7 +81,8 @@ which asdf >/dev/null || brew install asdf
 which atuin >/dev/null || brew install atuin
 which bat >/dev/null || brew install bat
 which bw >/dev/null || brew install bitwarden-cli
-which bytop >/dev/null || brew install bytop
+which bpytop >/dev/null || brew install bpytop
+which claude >/dev/null || brew install claude-code
 which delta >/dev/null || brew install git-delta
 which fd >/dev/null || brew install fd
 which fzf >/dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc)
@@ -90,6 +91,7 @@ which git >/dev/null || brew install git
 which git-flow >/dev/null || brew install git-flow-avh
 which gum >/dev/null || brew install gum
 which jq >/dev/null || brew install jq
+which k9s >/dev/null || brew install k9s
 which lazydocker >/dev/null || brew install lazydocker
 which lazygit >/dev/null || brew install lazygit
 which lazysql >/dev/null || brew install lazysql
@@ -116,24 +118,31 @@ if IS_WORK; then
     which glab >/dev/null || brew install glab
     brew tap hashicorp/tap
     which vault >/dev/null || brew install hashicorp/tap/vault
+    which vault-token-helper || brew install joemiller/taps/vault-token-helper
+    if [ ! -f "$HOME"/.vault ]; then vault-token-helper enable; fi
     which watchman >/dev/null || brew install watchman
 fi
 
 if is_macos; then
+    # change spacing in menu bar
+    defaults -currentHost write -globalDomain NSStatusItemSpacing -int 8
+
     which arc >/dev/null || brew install arc
     which orb >/dev/null || brew install orbstack
 
+    brew install bitwarden
     brew install rocket
     brew install shortcat
-    # brew install --cask TheBoredTeam/boring-notch/boring-notch --no-quarantine
     brew install --cask jordanbaird-ice
     brew install --cask karabiner-elements
-    brew install --cask logi-options-plus
     brew install --cask raycast
     brew install --cask rectangle
     brew install --cask stats
 
     if IS_WORK; then true; else
+        brew install --cask TheBoredTeam/boring-notch/boring-notch
+        brew install --cask logi-options-plus
+
         command -v mas >/dev/null
         if [ $? -ne 0 ]; then
             if [ $(uname -p) = i386 ]; then
@@ -143,7 +152,6 @@ if is_macos; then
                 which mas >/dev/null || brew install mas
             fi
         fi
-        mas install 1352778147 # Bitwarden
         mas install 1429033973 # RunCat
         mas install 1475387142 # Tailscale
         mas install 747648890  # Telegram
