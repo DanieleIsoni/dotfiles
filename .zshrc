@@ -18,6 +18,7 @@ if is_macos; then
 fi
 
 plugins+=(
+    zerobrew
     brew
     mise
     command-not-found
