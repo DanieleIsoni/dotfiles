@@ -112,6 +112,8 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 export PATH="$HOME/dev/bin:$PATH"
 
+export XDG_CONFIG_HOME="$HOME/.config"
+
 ####### ALIASES and FUNCTIONS
 
 ntfsmnt(){
