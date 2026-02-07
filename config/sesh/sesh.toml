@@ -19,12 +19,12 @@ startup_command = "nvim"
 
 [[session]]
 name = "󰎚 Scratches"
-path = "~/dev/work/scratches/"
+path = "~/dev/scratches/"
 startup_command = "nvim"
 
 [[session]]
 name = "󱂛 Rest APIs"
-path = "~/dev/work/rest-apis/"
+path = "~/dev/rest-apis/"
 startup_command = "nvim"
 
 [[session]]
