@@ -1,33 +1,28 @@
 [[session]]
-name = " Home"
+name = " home"
 path = "~"
 
 [[session]]
-name = "📥 Downloads"
+name = "📥 downloads"
 path = "~/Downloads/"
 startup_command = "y"
 
 [[session]]
-name = " Dotfiles"
+name = " dotfiles"
 path = "~/dotfiles/"
 startup_command = "nvim"
 
 [[session]]
-name = " Nvim"
+name = " nvim"
 path = "~/dotfiles/config/nvim/"
 startup_command = "nvim"
 
 [[session]]
-name = "󰎚 Scratches"
+name = "󰎚 scratches"
 path = "~/dev/scratches/"
 startup_command = "nvim"
 
 [[session]]
-name = "󱂛 Rest APIs"
+name = "󱂛 rest APIs"
 path = "~/dev/rest-apis/"
-startup_command = "nvim"
-
-[[session]]
-name = " Obsidian"
-path = "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/"
 startup_command = "nvim"
