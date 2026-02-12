@@ -42,6 +42,8 @@ keybind = cmd+shift+i=text:\x02I
 keybind = cmd+r=text:\x02r
 ## [ctrl+b k] tmux sesh
 keybind = cmd+k=text:\x02k
+## [ctrl+b L] tmux sesh
+keybind = cmd+L=text:\x02L
 ## [ctrl+b z] tmux focus window
 keybind = cmd+z=text:\x02z
 ## [ctrl+b [] tmux copy mode
