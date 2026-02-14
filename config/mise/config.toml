@@ -1,7 +1,5 @@
 [tools]
 go = "latest"
 node = "lts"
-poetry = "latest"
 process-compose = "latest"
 python = "latest"
-

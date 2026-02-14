@@ -103,13 +103,6 @@ disabled = true
 [package]
 disabled = true
 
-[custom.poetry]
-command = '''([ -f ".tool-versions" ] && grep "^poetry " .tool-versions | awk '{print $2}') || ([ -f "pyproject.toml" ] && poetry --version | awk '{sub(/\)$/, ""); print $NF}') '''
-detect_files = ['.tool-versions', 'pyproject.toml']
-symbol = ' '
-format = 'via [$symbol($output )]($style)'
-
-
 [kubernetes]
 disabled = false
 detect_folders = ['k8s']
