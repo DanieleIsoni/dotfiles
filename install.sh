@@ -71,7 +71,8 @@ which atuin >/dev/null || brew install atuin
 which bat >/dev/null || brew install bat
 which bw >/dev/null || brew install bitwarden-cli
 which bpytop >/dev/null || brew install bpytop
-which claude >/dev/null || brew install claude-code
+which claude >/dev/null || curl -fsSL https://claude.ai/install.sh | bash
+which codex >/dev/null || brew install codex
 which delta >/dev/null || brew install git-delta
 which fd >/dev/null || brew install fd
 which fzf >/dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --key-bindings --completion --update-rc)
