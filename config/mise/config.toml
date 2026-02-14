@@ -1,6 +1,6 @@
 [tools]
 go = "latest"
-node = "latest"
+node = "lts"
 poetry = "latest"
 process-compose = "latest"
 python = "latest"

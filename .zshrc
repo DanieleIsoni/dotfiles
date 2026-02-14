@@ -137,6 +137,9 @@ fi
 # make
 alias m="make"
 
+# mise
+alias mr="mise run"
+
 # Modify files
 alias zrc='cd ~/dotfiles/ && vim .zshrc'
 
