@@ -19,6 +19,7 @@ fi
 
 plugins+=(
     brew
+    asdf
     mise
     command-not-found
     docker
@@ -29,6 +30,7 @@ plugins+=(
     git-flow
     git-auto-fetch
     git-auto-status
+    gpg-agent
     poetry
     uv
     zoxide

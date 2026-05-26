@@ -79,7 +79,7 @@ which fzf >/dev/null || (brew install fzf && $(brew --prefix)/opt/fzf/install --
 which ghostty >/dev/null || brew install --cask ghostty
 which git >/dev/null || brew install git
 which git-flow >/dev/null || brew install git-flow-avh
-which gum >/dev/null || brew install gum
+which gum >/dev/null || brew install gum # Needed for sesh
 which jq >/dev/null || brew install jq
 which k9s >/dev/null || brew install k9s
 which lazydocker >/dev/null || brew install lazydocker
