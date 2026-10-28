@@ -1,4 +1,21 @@
 vim.g.autoformat = false
+local is_linux = vim.uv.os_uname().sysname == "Linux"
+local has_display = vim.env.DISPLAY or vim.env.WAYLAND_DISPLAY
+if is_linux and not has_display and (vim.env.REX_SESSION or vim.env.SSH_TTY) then
+  -- Important: don't redirect normal puts to the system clipboard
+  vim.g.clipboard = ""
+
+  local osc52_copy = require("vim.ui.clipboard.osc52").copy("+")
+
+  vim.api.nvim_create_autocmd("TextYankPost", {
+    group = vim.api.nvim_create_augroup("osc52_yank", { clear = true }),
+    callback = function()
+      if vim.v.event.operator == "y" then
+        osc52_copy(vim.v.event.regcontents, vim.v.event.regtype)
+      end
+    end,
+  })
+end
 
 -- Make line numbers default
 vim.opt.number = true
