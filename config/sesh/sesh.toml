@@ -1,3 +1,4 @@
+#:schema https://github.com/joshmedeski/sesh/raw/main/sesh.schema.json
 [[session]]
 name = " home"
 path = "~"
