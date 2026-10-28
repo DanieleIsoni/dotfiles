@@ -1,6 +1,7 @@
 return {
   {
     'christoomey/vim-tmux-navigator',
+    enabled = vim.env.TMUX ~= nil and vim.env.TMUX ~= '',
     cmd = {
       'TmuxNavigateLeft',
       'TmuxNavigateDown',
@@ -15,6 +16,18 @@ return {
       { '<c-k>', '<cmd><C-U>TmuxNavigateUp<cr>' },
       { '<c-l>', '<cmd><C-U>TmuxNavigateRight<cr>' },
       { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
+    },
+  },
+  {
+    'baggiponte/rex-navigator.nvim',
+    main = 'rex-navigator',
+    lazy = false,
+    opts = {},
+    keys = {
+      { '<c-h>', '<cmd>RexNavigateLeft<cr>' },
+      { '<c-j>', '<cmd>RexNavigateDown<cr>' },
+      { '<c-k>', '<cmd>RexNavigateUp<cr>' },
+      { '<c-l>', '<cmd>RexNavigateRight<cr>' },
     },
   },
 }
