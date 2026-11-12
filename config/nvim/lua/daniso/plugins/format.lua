@@ -5,11 +5,16 @@ return {
     'stevearc/conform.nvim',
     opts = {
       formatters = {
+        swift = {
+          command = 'xcrun',
+          prepend_args = { 'swift' },
+        },
         ruff_fix = {
           append_args = { '--unsafe-fixes' },
         },
       },
       formatters_by_ft = {
+        swift = { 'swift' },
         json = { 'biome' },
         ts = { 'biome' },
         tsx = { 'biome' },
