@@ -156,6 +156,12 @@ if [ ! -d $GHOSTTY_CONFIG_DIR ]; then
     ln -sf $DOTFILES_CONFIG_DIR/ghostty $GHOSTTY_CONFIG_DIR
 fi
 
+## Rex
+REX_CONFIG_DIR="$CONFIG_DIR/rex"
+if [ ! -d "$REX_CONFIG_DIR" ]; then
+    ln -sf "$DOTFILES_CONFIG_DIR/rex" "$REX_CONFIG_DIR"
+fi
+
 ## Nushell
 # NUSHELL_CONFIG_DIR="$HOME/Library/Application Support/nushell"
 # NUSHELL_XDG_CONFIG_DIR="$CONFIG_DIR/nushell"
