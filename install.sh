@@ -104,7 +104,7 @@ if is_macos; then
     # change spacing in menu bar
     defaults -currentHost write -globalDomain NSStatusItemSpacing -int 8
 
-    which arc >/dev/null || brew install arc
+    which zen >/dev/null || brew install zen
     which orb >/dev/null || brew install orbstack
 
     brew install bitwarden
