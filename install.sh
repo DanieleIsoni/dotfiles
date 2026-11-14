@@ -6,6 +6,17 @@ source $DOTFILES_DIR/utils.sh
 
 export USERNAME=$(whoami)
 
+# oh-my-zsh
+if [ ! -d $HOME/.oh-my-zsh ]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+OMZ_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
+OMZ_CUSTOM_PLUGINS=$OMZ_CUSTOM/plugins
+ZEROBREW_PLUGIN=$OMZ_CUSTOM_PLUGINS/zerobrew
+if [ ! -d $ZEROBREW_PLUGIN ]; then
+    ln -sf $DOTFILES_DIR/oh-my-zsh/custom/plugins/zerobrew $ZEROBREW_PLUGIN
+fi
 if is_linux; then
     sudo apt update
     sudo apt -y install --no-install-recommends apt-utils dialog 2>&1
@@ -15,17 +26,16 @@ if is_linux; then
         gcc pkg-config libxml2-dev libxmlsec1-dev libxmlsec1-openssl \
         libffi-dev build-essential zlib1g-dev libreadline-dev libsqlite3-dev liblzma-dev libbz2-dev
     which brew >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    which zb >/dev/null || /bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/lucasgelfond/zerobrew/main/install.sh)"
 elif is_macos; then
     which brew >/dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    which zb >/dev/null || /bin/bash -c "$(curl -sSL https://raw.githubusercontent.com/lucasgelfond/zerobrew/main/install.sh)"
 else
     echo "Unsupported OS"
     exit 1
 fi
 
-# oh-my-zsh
-if [ ! -d $HOME/.oh-my-zsh ]; then
-    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-fi
+zb completion zsh > $ZEROBREW_PLUGIN/zerobrew-completions.zsh
 
 if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.old
@@ -35,15 +45,12 @@ if is_linux; then sudo chsh -s /usr/bin/zsh $USERNAME; fi
 
 source ~/.zshrc
 
-OMZ_CUSTOM=${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}
-
 # install fonts
 if is_macos; then
     brew install --cask font-jetbrains-mono-nerd-font
 fi
 
 # oh-my-zsh plugins
-OMZ_CUSTOM_PLUGINS=$OMZ_CUSTOM/plugins
 ZSH_AUTOSUGGESTIONS_DIR=$OMZ_CUSTOM_PLUGINS/zsh-autosuggestions
 if [ ! -d $ZSH_AUTOSUGGESTIONS_DIR ]; then
     git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_AUTOSUGGESTIONS_DIR
